@@ -113,6 +113,8 @@ namespace ShopInventory
                 Console.WriteLine("Товар не найден!");
                 return;
             }
+            products.Remove(product);
+
         }
 
         static void SupplyProduct()
