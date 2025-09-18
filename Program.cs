@@ -128,6 +128,14 @@ namespace ShopInventory
                 Console.WriteLine("Товар не найден!");
                 return;
             }
+            Console.WriteLine("Введите количество для поставки: ");
+            if (!int.TryParse(Console.ReadLine(), out int quantity) || quantity <= 0)
+            {
+                Console.WriteLine("Ошибка ввода количества");
+                return;
+            }
+
+
         }
 
         static void SellProduct()
