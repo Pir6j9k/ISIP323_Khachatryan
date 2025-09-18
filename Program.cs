@@ -99,6 +99,7 @@ namespace ShopInventory
                 Quantity = quantity,
                 Category = category,
             });
+            Console.WriteLine("Товар успешно добавлен");
         }
 
         static void RemoveProduct()
