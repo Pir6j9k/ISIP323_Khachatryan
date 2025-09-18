@@ -169,7 +169,7 @@ namespace ShopInventory
 
         static void SearchProducts()
         {
-
+            Console.WriteLine("Поиск товаров");
         }
 
         static void SearchByCode()
