@@ -216,7 +216,8 @@ namespace ShopInventory
 
         static void SearchByName(string name)
         {
-        
+            var results = products.Where(p => p.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            ShowSearchResults(results);
         }
 
         static void SearchByCategory(Category category)
