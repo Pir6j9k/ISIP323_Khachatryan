@@ -91,6 +91,14 @@ namespace ShopInventory
                 Console.WriteLine("Ошибка ввода категории");
                 return;
             }
+            products.Add(new Product
+            {
+                Code = $"{productCounter++}",
+                Name = name,
+                Price = price,
+                Quantity = quantity,
+                Category = category,
+            });
         }
 
         static void RemoveProduct()
