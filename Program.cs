@@ -66,7 +66,13 @@ namespace ShopInventory
 
             Console.Write("Название: ");
             var name = Console.ReadLine();
-           
+            Console.Write("Цена: ");
+            if (!decimal.TryParse(Console.ReadLine(), out decimal price))
+            {
+                Console.WriteLine("Ошибка ввода цены");
+                return;
+            }
+
         }
 
         static void RemoveProduct()
