@@ -242,7 +242,8 @@ namespace ShopInventory
 
         static void ShowAllProducts()
         {
-           
+            Console.WriteLine("Все товары");
+
         }
     }
 }
