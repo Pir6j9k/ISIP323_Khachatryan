@@ -156,6 +156,12 @@ namespace ShopInventory
                 Console.WriteLine("Ошибка ввода количества!");
                 return;
             }
+            if (product.Quantity < quantity)
+            {
+                Console.WriteLine("Недостаточно товара на складе!");
+                return;
+            }
+
         }
 
         static void SearchProducts()
