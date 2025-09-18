@@ -243,6 +243,16 @@ namespace ShopInventory
         static void ShowAllProducts()
         {
             Console.WriteLine("Все товары");
+            if (!products.Any())
+            {
+                Console.WriteLine("Товары отсутствуют!");
+                return;
+            }
+
+            foreach (var product in products)
+            {
+                Console.WriteLine(product);
+            }
 
         }
     }
