@@ -73,6 +73,12 @@ namespace ShopInventory
                 return;
             }
 
+            Console.WriteLine("Количество: ");
+            if (!int.TryParse(Console.ReadLine(), out int quantity))
+            {
+                Console.WriteLine("Ошибка ввода количества");
+                return;
+            }
         }
 
         static void RemoveProduct()
