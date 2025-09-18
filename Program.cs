@@ -85,6 +85,12 @@ namespace ShopInventory
             {
                 Console.WriteLine($"{(int)cat}. {cat}");
             }
+            Console.WriteLine("Выберите категорию: ");
+            if (!Enum.TryParse(Console.ReadLine(), out Category category))
+            {
+                Console.WriteLine("Ошибка ввода категории");
+                return;
+            }
         }
 
         static void RemoveProduct()
