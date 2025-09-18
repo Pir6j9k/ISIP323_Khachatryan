@@ -30,6 +30,7 @@ namespace ShopInventory
     class Program
     {
         private static List<Product> products = new List<Product>();
+        private static int productCounter = 1;
         static void Main(string[] args)
         {
 
