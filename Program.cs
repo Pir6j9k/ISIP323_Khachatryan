@@ -64,8 +64,9 @@ namespace ShopInventory
         {
             Console.WriteLine("Добавление товара");
 
-            
-
+            Console.Write("Название: ");
+            var name = Console.ReadLine();
+           
         }
 
         static void RemoveProduct()
