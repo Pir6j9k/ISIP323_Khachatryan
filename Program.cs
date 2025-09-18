@@ -62,7 +62,10 @@ namespace ShopInventory
 
         static void AddProduct()
         {
+            Console.WriteLine("Добавление товара");
+
             
+
         }
 
         static void RemoveProduct()
