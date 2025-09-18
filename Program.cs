@@ -33,7 +33,31 @@ namespace ShopInventory
         private static int productCounter = 1;
         static void Main(string[] args)
         {
+            while (true)
+            {
+                Console.WriteLine("_____Учет товаров в магазине_____");
+                Console.WriteLine("1. Добавить товар");
+                Console.WriteLine("2. Удалить товар");
+                Console.WriteLine("3. Заказать поставку товара");
+                Console.WriteLine("4. Продать товар");
+                Console.WriteLine("5. Поиск товара по индексу");
+                Console.WriteLine("6. Вывести список товаров");
+                Console.WriteLine("0. Выход");
+                Console.Write("Выберите действие: ");
+                var choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1": AddProduct(); break;
+                    case "2": RemoveProduct(); break;
+                    case "3": SupplyProduct(); break;
+                    case "4": SellProduct(); break;
+                    case "5": SearchProducts(); break;
+                    case "6": ShowAllProducts(); break;
+                    case "0": return;
+                    default: Console.WriteLine("Неверный выбор"); break;
+                }
 
+            }
         }
 
         static void AddProduct()
