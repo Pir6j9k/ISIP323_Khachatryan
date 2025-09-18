@@ -114,6 +114,7 @@ namespace ShopInventory
                 return;
             }
             products.Remove(product);
+            Console.WriteLine("Товар успешно удалён");
 
         }
 
