@@ -29,10 +29,10 @@ namespace ShopInventory
 
     class Program
     {
-
+        private static List<Product> products = new List<Product>();
         static void Main(string[] args)
         {
-            
+
         }
 
         static void AddProduct()
