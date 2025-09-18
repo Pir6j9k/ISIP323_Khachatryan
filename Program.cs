@@ -107,6 +107,12 @@ namespace ShopInventory
             Console.WriteLine("Введите код товара для удаления: ");
             var code = Console.ReadLine();
 
+            var product = products.FirstOrDefault(p => p.Code == code);
+            if (product == null)
+            {
+                Console.WriteLine("Товар не найден!");
+                return;
+            }
         }
 
         static void SupplyProduct()
