@@ -222,7 +222,8 @@ namespace ShopInventory
 
         static void SearchByCategory(Category category)
         {
-            
+            var results = products.Where(p => p.Category == category);
+            ShowSearchResults(results);
         }
 
         static void ShowSearchResults(IEnumerable<Product> results)
