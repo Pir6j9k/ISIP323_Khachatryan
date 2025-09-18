@@ -6,12 +6,16 @@ namespace ShopInventory
 {
     public enum Category
     {
-
+        Electronics,
+        Cloths,
+        Food,
+        Books,
+        Sports
     }
 
     public class Product
     {
-        
+       
     }
 
     class Program
