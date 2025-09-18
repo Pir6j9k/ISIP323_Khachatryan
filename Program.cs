@@ -228,7 +228,16 @@ namespace ShopInventory
 
         static void ShowSearchResults(IEnumerable<Product> results)
         {
-         
+            if (!results.Any())
+            {
+                Console.WriteLine("Товары не найдены!");
+                return;
+            }
+
+            foreach (var product in results)
+            {
+                Console.WriteLine(product);
+            }
         }
 
         static void ShowAllProducts()
