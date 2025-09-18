@@ -161,6 +161,7 @@ namespace ShopInventory
                 Console.WriteLine("Недостаточно товара на складе!");
                 return;
             }
+            product.Quantity -= quantity;
 
         }
 
