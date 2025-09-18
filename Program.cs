@@ -73,19 +73,19 @@ namespace ShopInventory
                 return;
             }
 
-            Console.WriteLine("Количество: ");
+            Console.Write("Количество: ");
             if (!int.TryParse(Console.ReadLine(), out int quantity))
             {
                 Console.WriteLine("Ошибка ввода количества");
                 return;
             }
 
-            Console.WriteLine("Категория:");
+            Console.Write("Категория:");
             foreach (var cat in Enum.GetValues(typeof(Category)))
             {
                 Console.WriteLine($"{(int)cat}. {cat}");
             }
-            Console.WriteLine("Выберите категорию: ");
+            Console.Write("Выберите категорию: ");
             if (!Enum.TryParse(Console.ReadLine(), out Category category))
             {
                 Console.WriteLine("Ошибка ввода категории");
@@ -104,7 +104,9 @@ namespace ShopInventory
 
         static void RemoveProduct()
         {
-            
+            Console.WriteLine("Введите код товара для удаления: ");
+            var code = Console.ReadLine();
+
         }
 
         static void SupplyProduct()
