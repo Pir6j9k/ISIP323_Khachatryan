@@ -134,6 +134,7 @@ namespace ShopInventory
                 Console.WriteLine("Ошибка ввода количества");
                 return;
             }
+            product.Quantity += quantity;
 
 
         }
