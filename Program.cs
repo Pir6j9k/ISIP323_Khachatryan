@@ -47,22 +47,22 @@ namespace ShopInventory
 
         }
 
-        static void SearchByCode(string code)
+        static void SearchByCode()
         {
 
         }
 
-        static void SearchByName(string name)
+        static void SearchByName()
         {
         
         }
 
-        static void SearchByCategory(Category category)
+        static void SearchByCategory()
         {
             
         }
 
-        static void ShowSearchResults(IEnumerable<Product> results)
+        static void ShowSearchResults()
         {
          
         }
