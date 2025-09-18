@@ -170,6 +170,10 @@ namespace ShopInventory
         static void SearchProducts()
         {
             Console.WriteLine("Поиск товаров");
+            Console.WriteLine("1. По коду");
+            Console.WriteLine("2. По названию");
+            Console.WriteLine("3. По категории");
+            Console.Write("Выберите тип поиска: ");
         }
 
         static void SearchByCode()
