@@ -135,6 +135,7 @@ namespace ShopInventory
                 return;
             }
             product.Quantity += quantity;
+            Console.WriteLine("Поставка успешно обработана");
 
 
         }
