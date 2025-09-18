@@ -144,6 +144,12 @@ namespace ShopInventory
         {
             Console.Write("\nВведите код товара для продажи: ");
             var code = Console.ReadLine();
+            var product = products.FirstOrDefault(p => p.Code == code);
+            if (product == null)
+            {
+                Console.WriteLine("Товар не найден!");
+                return;
+            }
         }
 
         static void SearchProducts()
