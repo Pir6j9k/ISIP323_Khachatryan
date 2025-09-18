@@ -79,6 +79,12 @@ namespace ShopInventory
                 Console.WriteLine("Ошибка ввода количества");
                 return;
             }
+
+            Console.WriteLine("Категория:");
+            foreach (var cat in Enum.GetValues(typeof(Category)))
+            {
+                Console.WriteLine($"{(int)cat}. {cat}");
+            }
         }
 
         static void RemoveProduct()
