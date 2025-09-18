@@ -120,7 +120,9 @@ namespace ShopInventory
 
         static void SupplyProduct()
         {
-            
+            Console.WriteLine("Введите код товара для поставки: "); 
+            var code = Console.ReadLine();    
+
         }
 
         static void SellProduct()
