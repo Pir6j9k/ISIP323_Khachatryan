@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 
 namespace ShopInventory
 {
@@ -174,24 +175,55 @@ namespace ShopInventory
             Console.WriteLine("2. По названию");
             Console.WriteLine("3. По категории");
             Console.Write("Выберите тип поиска: ");
+            var choice  = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    Console.WriteLine("Введите код: ");
+                    SearchByCode(Console.ReadLine());
+                    break;
+                case "2":
+                    Console.WriteLine("Введите название: ");
+                    SearchByName(Console.ReadLine());
+                    break; 
+                case "3":
+                    Console.WriteLine("Доступные категории:");
+                    foreach (var cat in Enum.GetValues(typeof(Category)))
+                    {
+                        Console.WriteLine($"{(int)cat}. {cat}");
+                    }
+                    Console.Write("Выберите категорию: ");
+                    if (Enum.TryParse(Console.ReadLine(), out Category category))
+                    {
+                        SearchByCategory(category);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка выбора категории!");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Неверный выбор");
+                    break;
+            }
         }
 
-        static void SearchByCode()
+        static void SearchByCode(string code)
         {
 
         }
 
-        static void SearchByName()
+        static void SearchByName(string name)
         {
         
         }
 
-        static void SearchByCategory()
+        static void SearchByCategory(Category category)
         {
             
         }
 
-        static void ShowSearchResults()
+        static void ShowSearchResults(IEnumerable<Product> results)
         {
          
         }
