@@ -223,7 +223,14 @@ namespace ShopInventory
 
         static void SearchByName(string name)
         {
-            var results = products.Where(p => p.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            var results = new List<Product>();
+            foreach (var p in products)
+            {
+                if (p.Name.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    results.Add(p);
+                }
+            }
             ShowSearchResults(results);
         }
 
