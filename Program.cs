@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 
 namespace ShopInventory
@@ -105,18 +104,19 @@ namespace ShopInventory
 
         static void RemoveProduct()
         {
-            Console.WriteLine("Введите код товара для удаления: ");
+            Console.Write("Введите код товара для удаления: ");
             var code = Console.ReadLine();
 
-            var product = products.FirstOrDefault(p => p.Code == code);
-            if (product == null)
+            for (int i = 0; i < products.Count; i++)
             {
-                Console.WriteLine("Товар не найден!");
-                return;
+                if (products[i].Code == code)
+                {
+                    products.RemoveAt(i);
+                    Console.WriteLine("Товар успешно удалён!");
+                    return; 
+                }
             }
-            products.Remove(product);
-            Console.WriteLine("Товар успешно удалён");
-
+            Console.WriteLine("Товар не найден!");
         }
 
         static void SupplyProduct()
