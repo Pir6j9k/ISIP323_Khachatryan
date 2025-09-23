@@ -236,7 +236,14 @@ namespace ShopInventory
 
         static void SearchByCategory(Category category)
         {
-            var results = products.Where(p => p.Category == category);
+            var results = new List<Product>();
+            foreach (var p in products)
+            {
+                if(p.Category == category)
+                {
+                    results.Add(p);
+                }
+            }
             ShowSearchResults(results);
         }
 
