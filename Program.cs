@@ -210,7 +210,14 @@ namespace ShopInventory
 
         static void SearchByCode(string code)
         {
-            var results = products.Where(p => p.Code.Equals(code, StringComparison.OrdinalIgnoreCase));
+            var results = new List<Product>();
+            foreach (var p in products)
+            {
+                if (p.Code.Equals(code, StringComparison.OrdinalIgnoreCase))
+                {
+                    results.Add(p);
+                }
+            }
             ShowSearchResults(results);
         }
 
