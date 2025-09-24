@@ -61,6 +61,7 @@ namespace TextAnalyzer
                     CountGlasAndSogl(text, out int glas, out int sogl);
                     stats.GlasCount = glas;
                     stats.SoglCount = sogl;
+                    stats.LetterFrequency = GetLetterFrequency(text);
                 }
             }
 
