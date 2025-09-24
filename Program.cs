@@ -203,6 +203,14 @@ namespace TextAnalyzer
                                 }
                             }
                         }
+                        if (IsGlas)
+                        {
+                            glas++;
+                        }
+                        else
+                        {
+                            sogl++;
+                        }
 
                     }
                 }
