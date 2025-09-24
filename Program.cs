@@ -94,6 +94,10 @@ namespace TextAnalyzer
                     }
                     return wordCount;
                 }
+                static void FindWordExtremes(string text, out string shortest, out string longest)
+                {
+
+                }
             }
 
         }
