@@ -98,6 +98,22 @@ namespace TextAnalyzer
                     shortest = "";
                     longest = "";
                     string[] words = SplitTextIntoWords(text);
+                    if (words.Length > 0)
+                    {
+                        shortest = words[0];
+                        longest = words[0];
+                        for (int i = 1; i < words.Length; i++)
+                        {
+                            if (words[i].Length < shortest.Length)
+                            {
+                                shortest = words[i];
+                            }
+                            if (words[i].Length > longest.Length)
+                            {
+                                longest = words[i];
+                            }
+                        }
+                    }
 
                 }
             }
