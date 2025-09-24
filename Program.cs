@@ -169,6 +169,7 @@ namespace TextAnalyzer
                 {
                     sentCount++;
                 }
+                return sentCount;
             }
         }
 
