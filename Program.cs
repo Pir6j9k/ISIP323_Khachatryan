@@ -136,6 +136,10 @@ namespace TextAnalyzer
                             }
                         }
                     }
+                    if(currentWord.Length > 0)
+                    {
+                        words.Add(currentWord.ToString());
+                    }
 
                 }
 
