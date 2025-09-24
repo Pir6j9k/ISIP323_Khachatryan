@@ -82,7 +82,11 @@ namespace TextAnalyzer
                     bool inWord = false;
                     for (int i = 0; i < text.Length; i++)
                     {
-
+                        if(char.IsLetterOrDigit(text[i]) && !inWord)
+                        {
+                            inWord = true; 
+                            wordCount++;
+                        }
                     }
                 }
             }
