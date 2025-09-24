@@ -96,7 +96,8 @@ namespace TextAnalyzer
                 }
                 static void FindWordExtremes(string text, out string shortest, out string longest)
                 {
-
+                    shortest = "";
+                    longest = "";
                 }
             }
 
