@@ -19,5 +19,9 @@ namespace TextAnalyzer
             public DateTime AnalyzerTime {  get; set; }
         }
         static List<TextStats> allstats = new List<TextStats>();
+        static void Main()
+        {
+
+        }
     }
 }
