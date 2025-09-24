@@ -257,6 +257,10 @@ namespace TextAnalyzer
                 Console.WriteLine($"\nВремя анализа: {stats.AnalyzerTime}");
 
             }
+            static void ShowPreviousStats()
+            {
+               
+            }
         }
 
 
