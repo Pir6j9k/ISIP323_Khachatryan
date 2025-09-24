@@ -42,6 +42,11 @@ namespace TextAnalyzer
                         Console.WriteLine("Неверный выбор");
                         break;
                 }
+                static void AnalyseNewText()
+                {
+                    
+
+                }
             }
 
         }
