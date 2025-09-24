@@ -179,6 +179,10 @@ namespace TextAnalyzer
                                    'А', 'Е', 'Ё', 'И', 'О', 'У', 'Ы', 'Э', 'Ю', 'Я' };
                 char[] engGlas = { 'a', 'e', 'i', 'o', 'u', 'y',
                                    'A', 'E', 'I', 'O', 'U', 'Y' };
+                for (int i = 0; i < text.Length; i++)
+                {
+                    
+                }
 
             }
         }
