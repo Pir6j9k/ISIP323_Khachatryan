@@ -80,7 +80,10 @@ namespace TextAnalyzer
                 {
                     int wordCount = 0;
                     bool inWord = false;
-                    
+                    for (int i = 0; i < text.Length; i++)
+                    {
+
+                    }
                 }
             }
 
