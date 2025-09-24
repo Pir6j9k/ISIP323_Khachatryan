@@ -218,6 +218,7 @@ namespace TextAnalyzer
             }
             static Dictionary<char, int> GetLetterFrequency(string text)
             {
+                Dictionary<char,int> frequency = new Dictionary<char,int>();
 
             }
 
