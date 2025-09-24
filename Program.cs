@@ -92,6 +92,7 @@ namespace TextAnalyzer
                             inWord = false;
                         }
                     }
+                    return wordCount;
                 }
             }
 
