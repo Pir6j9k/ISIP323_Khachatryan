@@ -78,7 +78,9 @@ namespace TextAnalyzer
                 }
                 static int CountWords(string text)
                 {
-
+                    int wordCount = 0;
+                    bool inWord = false;
+                    
                 }
             }
 
