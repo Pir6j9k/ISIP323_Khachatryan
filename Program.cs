@@ -121,6 +121,10 @@ namespace TextAnalyzer
                     List<string> words = new List<string>();
                     StringBuilder currentWord = new StringBuilder();
                     char[] separators = GetWordSeparators(); 
+                    for (int i = 0; i < text.Length; i++)
+                    {
+
+                    }
 
                 }
 
