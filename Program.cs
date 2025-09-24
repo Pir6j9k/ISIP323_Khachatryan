@@ -116,6 +116,11 @@ namespace TextAnalyzer
                     }
 
                 }
+                static string[] SplitTexIntoWords(string text)
+                {
+
+                }
+
             }
 
         }
