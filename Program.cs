@@ -53,9 +53,9 @@ namespace TextAnalyzer
                     }
                     TextStats stats = new TextStats();
                     stats.AnalyzerTime = DateTime.Now;
+                    stats.WordCount = CountWords(text);
 
-
-                }
+                } 
             }
 
         }
