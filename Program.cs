@@ -65,6 +65,10 @@ namespace TextAnalyzer
                     allstats.Add(stats);
                     DisplayCurrentStats(stats);
                 }
+                static string GetTextFromUser()
+                {
+
+                }
             }
 
         }
