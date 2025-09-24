@@ -254,6 +254,7 @@ namespace TextAnalyzer
                 {
                     Console.WriteLine($"{letter}: {stats.LetterFrequency[letter]}"); 
                 }
+                Console.WriteLine($"\nВремя анализа: {stats.AnalyzerTime}");
 
             }
         }
