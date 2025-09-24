@@ -265,15 +265,18 @@ namespace TextAnalyzer
                     return;
                 }
                 Console.WriteLine($"\nСтатистика по {allstats.Count} текстам");
-
+                for (int i = 0; i < allstats.Count; i++)
+                {
+                    Console.WriteLine($"\nТекст #{i + 1} (анализ: {allstats[i].AnalyzerTime}):"); 
+                    Console.WriteLine($"Слов: {allstats[i].WordCount}, Предложений: {allstats[i].SentenceCount}"); 
+                    Console.WriteLine($"Гласные: {allstats[i].GlasCount}, Согласные: {allstats[i].SoglCount}"); 
+                    Console.WriteLine($"Самое короткое слово: '{allstats[i].ShortestWord}'"); 
+                    Console.WriteLine($"Самое длинное слово: '{allstats[i].LongestWord}'");                     
+                }
             }
         }
 
 
-        }
-
     }
-}
 
-            
-       
+}
