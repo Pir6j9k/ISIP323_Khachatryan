@@ -148,6 +148,7 @@ namespace TextAnalyzer
         {
                 List <char> separators = new List<char>();
                 separators.AddRange(new char[] { ' ', '\t', '\n', '\r', '!', ',', '.', '?', ';', ':', '-', '(', ')', '"', '[', ']', '{', '}', '\'' });
+                return separators.ToArray();
         }
     }
 
