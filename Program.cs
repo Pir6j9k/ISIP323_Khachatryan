@@ -58,7 +58,9 @@ namespace TextAnalyzer
                     stats.ShortestWord = shortest;
                     stats.LongestWord = longest;
                     stats.SentenceCount = CountSentences(text);
-
+                    CountGlasAndSogl(text, out int glas, out int sogl);
+                    stats.GlasCount = glas;
+                    stats.SoglCount = sogl;
                 }
             }
 
