@@ -4,4 +4,8 @@ using System.Text;
 
 namespace TextAnalyzer
 {
+    class Program
+    {
+        
+    }
 }
