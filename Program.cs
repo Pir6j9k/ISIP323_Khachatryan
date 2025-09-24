@@ -147,6 +147,7 @@ namespace TextAnalyzer
         static char[] GetWordSeparators()
         {
                 List <char> separators = new List<char>();
+                separators.AddRange(new char[] { ' ', '\t', '\n', '\r', '!', ',', '.', '?', ';', ':', '-', '(', ')', '"', '[', ']', '{', '}', '\'' });
         }
     }
 
