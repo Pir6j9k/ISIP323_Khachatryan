@@ -117,7 +117,7 @@ namespace TextAnalyzer
                 }
 
             }
-            static string[] SplitTexIntoWords(string text)
+            static string[] SplitTextIntoWords(string text)
             {
                 List<string> words = new List<string>();
                 StringBuilder currentWord = new StringBuilder();
@@ -170,6 +170,10 @@ namespace TextAnalyzer
                     sentCount++;
                 }
                 return sentCount;
+            }
+            static void CountGlasAndSogl(string text, out int glas, out int sogl)
+            {
+                
             }
         }
 
