@@ -87,6 +87,10 @@ namespace TextAnalyzer
                             inWord = true; 
                             wordCount++;
                         }
+                        else if (char.IsWhiteSpace(text[i])&& char.IsPunctuation(text[i]))
+                        {
+                            inWord = false;
+                        }
                     }
                 }
             }
