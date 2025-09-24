@@ -239,6 +239,12 @@ namespace TextAnalyzer
             }
             static void DisplayCurrentStats(TextStats stats)
             {
+                Console.WriteLine($"Количество слов: {stats.WordCount}");
+                Console.WriteLine($"Самое короткое слово: '{stats.ShortestWord}'");
+                Console.WriteLine($"Самое длинное слово: '{stats.LongestWord}'");
+                Console.WriteLine($"Количество предложений: {stats.SentenceCount}");
+                Console.WriteLine($"Количество гласных букв: {stats.GlasCount}");
+                Console.WriteLine($"Количество согласных букв: {stats.SoglCount}");
 
             }
 
