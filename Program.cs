@@ -44,7 +44,15 @@ namespace TextAnalyzer
                 }
                 static void AnalyseNewText()
                 {
-                    
+                    Console.WriteLine("Введите текст (минимум 100 символов): ");
+                    string text = GetTextFromUser();
+                    if (text.Length < 100)
+                    {
+                        Console.WriteLine("Недостаточно символов");
+                        return;
+                    }
+                    TextStats stats = new TextStats();
+
 
                 }
             }
