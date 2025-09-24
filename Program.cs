@@ -146,7 +146,7 @@ namespace TextAnalyzer
         }
         static char[] GetWordSeparators()
         {
-
+                List <char> separators = new List<char>();
         }
     }
 
