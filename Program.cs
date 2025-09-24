@@ -181,7 +181,12 @@ namespace TextAnalyzer
                                    'A', 'E', 'I', 'O', 'U', 'Y' };
                 for (int i = 0; i < text.Length; i++)
                 {
-                    
+                    if (char.IsLetter(text[i]))
+                    {
+                        bool IsGlas = false;
+                        
+
+                    }
                 }
 
             }
