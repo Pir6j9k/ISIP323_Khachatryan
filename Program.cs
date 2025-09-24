@@ -154,6 +154,17 @@ namespace TextAnalyzer
             {
                 int sentCount = 0;
                 bool InSent = false;
+                for(int i = 0;i < text.Length;i++)
+                {
+                    if ((text[i])=='.' ||  (text[i] == '!' ||  text[i] == '?') && InSent)
+                    {
+                        sentCount++;
+                        InSent = false;
+                    }
+                    else if (char.IsLetter(text[i]) && !InSent){
+                        InSent = true;
+                    }                                          
+                }
 
             }
         }
