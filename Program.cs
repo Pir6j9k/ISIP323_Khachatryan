@@ -28,7 +28,7 @@ namespace TextAnalyzer
                 Console.WriteLine("2. Просмотр статистики по прошлым текстам");
                 Console.WriteLine("3. Выход");
                 string choice = Console.ReadLine();
-                switch(choice) 
+                switch (choice)
                 {
                     case "1":
                         AnalyseNewText();
@@ -38,114 +38,118 @@ namespace TextAnalyzer
                         break;
                     case "3":
                         return;
-                    default: 
+                    default:
                         Console.WriteLine("Неверный выбор");
                         break;
                 }
-                static void AnalyseNewText()
+            }
+        static void AnalyseNewText()
+        {
+            Console.WriteLine("Введите текст (минимум 100 символов): ");
+            string text = GetTextFromUser();
+            if (text.Length < 100)
+            {
+                Console.WriteLine("Недостаточно символов");
+                return;
+            }
+            TextStats stats = new TextStats();
+            stats.AnalyzerTime = DateTime.Now;
+            stats.WordCount = CountWords(text);
+            FindWordExtremes(text, out string shortest, out string longest);
+            stats.ShortestWord = shortest;
+            stats.LongestWord = longest;
+            stats.SentenceCount = CountSentences(text);
+            CountGlasAndSogl(text, out int glas, out int sogl);
+            stats.GlasCount = glas;
+            stats.SoglCount = sogl;
+            stats.LetterFrequency = GetLetterFrequency(text);
+            allstats.Add(stats);
+            DisplayCurrentStats(stats);
+        }
+        static string GetTextFromUser()
+        {
+            StringBuilder textSb = new StringBuilder();
+            string line;
+            while(!string.IsNullOrEmpty(line=Console.ReadLine()))
+            {
+                textSb.AppendLine(line);
+            }
+            return textSb.ToString().Trim();
+        }
+        static int CountWords(string text)
+        {
+            int wordCount = 0;
+            bool inWord = false;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if(char.IsLetterOrDigit(text[i]) && !inWord)
                 {
-                    Console.WriteLine("Введите текст (минимум 100 символов): ");
-                    string text = GetTextFromUser();
-                    if (text.Length < 100)
-                    {
-                        Console.WriteLine("Недостаточно символов");
-                        return;
-                    }
-                    TextStats stats = new TextStats();
-                    stats.AnalyzerTime = DateTime.Now;
-                    stats.WordCount = CountWords(text);
-                    FindWordExtremes(text, out string shortest, out string longest);
-                    stats.ShortestWord = shortest;
-                    stats.LongestWord = longest;
-                    stats.SentenceCount = CountSentences(text);
-                    CountGlasAndSogl(text, out int glas, out int sogl);
-                    stats.GlasCount = glas;
-                    stats.SoglCount = sogl;
-                    stats.LetterFrequency = GetLetterFrequency(text);
-                    allstats.Add(stats);
-                    DisplayCurrentStats(stats);
+                    inWord = true; 
+                    wordCount++;
                 }
-                static string GetTextFromUser()
+                else if (char.IsWhiteSpace(text[i])&& char.IsPunctuation(text[i]))
                 {
-                    StringBuilder textSb = new StringBuilder();
-                    string line;
-                    while(!string.IsNullOrEmpty(line=Console.ReadLine()))
-                    {
-                        textSb.AppendLine(line);
-                    }
-                    return textSb.ToString().Trim();
+                    inWord = false;
                 }
-                static int CountWords(string text)
+            }
+            return wordCount;
+        }
+        static void FindWordExtremes(string text, out string shortest, out string longest)
+        {
+            shortest = "";
+            longest = "";
+            string[] words = SplitTextIntoWords(text);
+            if (words.Length > 0)
+            {
+                shortest = words[0];
+                longest = words[0];
+                for (int i = 1; i < words.Length; i++)
                 {
-                    int wordCount = 0;
-                    bool inWord = false;
-                    for (int i = 0; i < text.Length; i++)
+                    if (words[i].Length < shortest.Length)
                     {
-                        if(char.IsLetterOrDigit(text[i]) && !inWord)
-                        {
-                            inWord = true; 
-                            wordCount++;
-                        }
-                        else if (char.IsWhiteSpace(text[i])&& char.IsPunctuation(text[i]))
-                        {
-                            inWord = false;
-                        }
+                        shortest = words[i];
                     }
-                    return wordCount;
+                    if (words[i].Length > longest.Length)
+                    {
+                        longest = words[i];
+                    }
                 }
-                static void FindWordExtremes(string text, out string shortest, out string longest)
-                {
-                    shortest = "";
-                    longest = "";
-                    string[] words = SplitTextIntoWords(text);
-                    if (words.Length > 0)
-                    {
-                        shortest = words[0];
-                        longest = words[0];
-                        for (int i = 1; i < words.Length; i++)
-                        {
-                            if (words[i].Length < shortest.Length)
-                            {
-                                shortest = words[i];
-                            }
-                            if (words[i].Length > longest.Length)
-                            {
-                                longest = words[i];
-                            }
-                        }
-                    }
-
-                }
-                static string[] SplitTexIntoWords(string text)
-                {
-                    List<string> words = new List<string>();
-                    StringBuilder currentWord = new StringBuilder();
-                    char[] separators = GetWordSeparators(); 
-                    for (int i = 0; i < text.Length; i++)
-                    {
-                        if (Array.IndexOf(separators, text[i]) == -1)
-                        {
-                            currentWord.Append(text[i]);
-                        }
-                        else
-                        {
-                            if (currentWord.Length > 0) 
-                            {
-                                words.Add(currentWord.ToString()); 
-                                currentWord.Clear(); 
-                            }
-                        }
-                    }
-                    if(currentWord.Length > 0)
-                    {
-                        words.Add(currentWord.ToString());
-                    }
-                    return words.ToArray();
-
-                }
-
             }
 
         }
+        static string[] SplitTexIntoWords(string text)
+        {
+            List<string> words = new List<string>();
+            StringBuilder currentWord = new StringBuilder();
+            char[] separators = GetWordSeparators(); 
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (Array.IndexOf(separators, text[i]) == -1)
+                {
+                    currentWord.Append(text[i]);
+                }
+                else
+                {
+                    if (currentWord.Length > 0) 
+                    {
+                        words.Add(currentWord.ToString()); 
+                        currentWord.Clear(); 
+                    }
+                }
+            }
+            if(currentWord.Length > 0)
+            {
+                words.Add(currentWord.ToString());
+            }
+            return words.ToArray();
+
+        }
+        static char[] GetWordSeparators()
+        {
+
+        }
     }
+
+            }
+        }
 }
