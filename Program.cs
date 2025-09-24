@@ -218,7 +218,7 @@ namespace TextAnalyzer
             }
             static Dictionary<char, int> GetLetterFrequency(string text)
             {
-                Dictionary<char,int> frequency = new Dictionary<char,int>();
+                Dictionary<char, int> frequency = new Dictionary<char, int>();
                 for (int i = 0; i < text.Length; i++)
                 {
                     char currentChar = char.ToLower(text[i]);
@@ -236,6 +236,11 @@ namespace TextAnalyzer
                     }
                 }
                 return frequency;
+            }
+            static void DisplayCurrentStats(TextStats stats)
+            {
+
+            }
 
 
         }
