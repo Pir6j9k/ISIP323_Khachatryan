@@ -259,7 +259,11 @@ namespace TextAnalyzer
             }
             static void ShowPreviousStats()
             {
-               
+                if (allstats.Count == 0)
+                {
+                    Console.WriteLine("Статистика по предыдущим текстам отсутствует.");
+                    return;
+                }
             }
         }
 
