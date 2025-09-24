@@ -223,7 +223,17 @@ namespace TextAnalyzer
                 {
                     char currentChar = char.ToLower(text[i]);
 
-                    
+                    if (char.IsLetter(currentChar))
+                    {
+                        if (frequency.ContainsKey(currentChar))
+                        {
+                            frequency[currentChar]++;
+                        }
+                        else
+                        {
+                            frequency[currentChar] = 1;
+                        }
+                    }
 
                 }
 
