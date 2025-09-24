@@ -245,8 +245,18 @@ namespace TextAnalyzer
                 Console.WriteLine($"Количество предложений: {stats.SentenceCount}");
                 Console.WriteLine($"Количество гласных букв: {stats.GlasCount}");
                 Console.WriteLine($"Количество согласных букв: {stats.SoglCount}");
+                Console.WriteLine("\nСтатистика по буквам:");
+
+                List<char> sortedLetters = new List<char>(stats.LetterFrequency.Keys); 
+                sortedLetters.Sort(); 
+
+                foreach (char letter in sortedLetters) 
+                {
+                    Console.WriteLine($"{letter}: {stats.LetterFrequency[letter]}"); 
+                }
 
             }
+        }
 
 
         }
