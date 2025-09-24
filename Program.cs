@@ -123,7 +123,18 @@ namespace TextAnalyzer
                     char[] separators = GetWordSeparators(); 
                     for (int i = 0; i < text.Length; i++)
                     {
-
+                        if (Array.IndexOf(separators, text[i]) == -1)
+                        {
+                            currentWord.Append(text[i]);
+                        }
+                        else
+                        {
+                            if (currentWord.Length > 0) 
+                            {
+                                words.Add(currentWord.ToString()); 
+                                currentWord.Clear(); 
+                            }
+                        }
                     }
 
                 }
