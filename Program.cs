@@ -216,6 +216,12 @@ namespace TextAnalyzer
                 }
 
             }
+            static Dictionary<char, int> GetLetterFrequency(string text)
+            {
+
+            }
+
+
         }
 
     }
