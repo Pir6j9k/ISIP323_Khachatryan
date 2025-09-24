@@ -184,7 +184,14 @@ namespace TextAnalyzer
                     if (char.IsLetter(text[i]))
                     {
                         bool IsGlas = false;
-                        
+                        for (int j = 0; j < russGlas.Length; j++)
+                        {
+                            if (text[i] == russGlas[j])
+                            {
+                                IsGlas = true;
+                                break;
+                            }
+                        }
 
                     }
                 }
