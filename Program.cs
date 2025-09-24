@@ -54,6 +54,9 @@ namespace TextAnalyzer
                     TextStats stats = new TextStats();
                     stats.AnalyzerTime = DateTime.Now;
                     stats.WordCount = CountWords(text);
+                    FindWordExtremes(text, out string shortest, out string longest);
+                    stats.ShortestWord = shortest;
+                    stats.LongestWord = longest;
 
                 } 
             }
