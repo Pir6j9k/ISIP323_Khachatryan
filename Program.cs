@@ -68,6 +68,7 @@ namespace TextAnalyzer
                 static string GetTextFromUser()
                 {
                     StringBuilder textSb = new StringBuilder();
+                    string line;
 
                 }
             }
