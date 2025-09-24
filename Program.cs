@@ -57,8 +57,9 @@ namespace TextAnalyzer
                     FindWordExtremes(text, out string shortest, out string longest);
                     stats.ShortestWord = shortest;
                     stats.LongestWord = longest;
+                    stats.SentenceCount = CountSentences(text);
 
-                } 
+                }
             }
 
         }
