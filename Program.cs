@@ -173,7 +173,8 @@ namespace TextAnalyzer
             }
             static void CountGlasAndSogl(string text, out int glas, out int sogl)
             {
-                
+                glas = 0;
+                sogl = 0;
             }
         }
 
