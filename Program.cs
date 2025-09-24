@@ -119,6 +119,7 @@ namespace TextAnalyzer
                 static string[] SplitTexIntoWords(string text)
                 {
                     List<string> words = new List<string>();
+                    StringBuilder currentWord = new StringBuilder();
 
                 }
 
