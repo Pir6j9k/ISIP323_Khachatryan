@@ -165,7 +165,10 @@ namespace TextAnalyzer
                         InSent = true;
                     }                                          
                 }
-
+                if (InSent)
+                {
+                    sentCount++;
+                }
             }
         }
 
