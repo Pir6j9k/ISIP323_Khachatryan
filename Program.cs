@@ -18,5 +18,6 @@ namespace TextAnalyzer
             public Dictionary<char, int> LetterFrequency { get; set; }
             public DateTime AnalyzerTime {  get; set; }
         }
+        static List<TextStats> allstats = new List<TextStats>();
     }
 }
