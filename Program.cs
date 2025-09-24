@@ -234,8 +234,8 @@ namespace TextAnalyzer
                             frequency[currentChar] = 1;
                         }
                     }
-
                 }
+                return frequency;
 
 
         }
