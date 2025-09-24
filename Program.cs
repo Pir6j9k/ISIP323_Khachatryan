@@ -152,6 +152,8 @@ namespace TextAnalyzer
             }
             static int CountSentences(string text)
             {
+                int sentCount = 0;
+                bool InSent = false;
 
             }
         }
