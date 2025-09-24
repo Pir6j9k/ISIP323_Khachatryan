@@ -264,6 +264,8 @@ namespace TextAnalyzer
                     Console.WriteLine("Статистика по предыдущим текстам отсутствует.");
                     return;
                 }
+                Console.WriteLine($"\nСтатистика по {allstats.Count} текстам");
+
             }
         }
 
