@@ -140,6 +140,7 @@ namespace TextAnalyzer
                     {
                         words.Add(currentWord.ToString());
                     }
+                    return words.ToArray();
 
                 }
 
