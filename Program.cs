@@ -192,6 +192,17 @@ namespace TextAnalyzer
                                 break;
                             }
                         }
+                        if (!IsGlas)
+                        {
+                            for (int j = 0; j < engGlas.Length; j++)
+                            {
+                                if (text[i] == engGlas[j])
+                                {
+                                    IsGlas = true;
+                                    break;
+                                }
+                            }
+                        }
 
                     }
                 }
