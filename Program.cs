@@ -76,6 +76,10 @@ namespace TextAnalyzer
                     }
                     return textSb.ToString().Trim();
                 }
+                static int CountWords(string text)
+                {
+
+                }
             }
 
         }
