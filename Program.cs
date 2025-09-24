@@ -21,6 +21,28 @@ namespace TextAnalyzer
         static List<TextStats> allstats = new List<TextStats>();
         static void Main()
         {
+            while (true)
+            {
+                Console.WriteLine("Выберите дейстиве: ");
+                Console.WriteLine("1. Анализ нового текста");
+                Console.WriteLine("2. Просмотр статистики по прошлым текстам");
+                Console.WriteLine("3. Выход");
+                string choice = Console.ReadLine();
+                switch(choice) 
+                {
+                    case "1":
+                        AnalyseNewText();
+                        break;
+                    case "2":
+                        ShowPreviousStats();
+                        break;
+                    case "3":
+                        return;
+                    default: 
+                        Console.WriteLine("Неверный выбор");
+                        break;
+                }
+            }
 
         }
     }
