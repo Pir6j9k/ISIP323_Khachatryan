@@ -69,7 +69,6 @@ namespace TextAnalyzer
                 {
                     StringBuilder textSb = new StringBuilder();
                     string line;
-                    Console.WriteLine("Введите текст (для завершения ввода введите пустую строку):");
                     while(!string.IsNullOrEmpty(line=Console.ReadLine()))
                     {
                         textSb.AppendLine(line);
@@ -98,6 +97,7 @@ namespace TextAnalyzer
                 {
                     shortest = "";
                     longest = "";
+                    string[] words = SplitTextIntoWords(text);
                 }
             }
 
