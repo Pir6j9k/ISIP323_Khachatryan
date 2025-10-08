@@ -155,7 +155,8 @@ namespace LibraryApp
         // Отсортировать книги по названию
         public void SortBooksByTitle()
         {
-            // TODO: Реализовать сортировку по названию
+            var sorted = books.OrderBy(b => b.Title); // LINQ-сортировка
+            DisplayList(sorted);
         }
 
         // Отсортировать книги по году
