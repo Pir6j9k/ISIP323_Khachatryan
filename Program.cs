@@ -162,7 +162,8 @@ namespace LibraryApp
         // Отсортировать книги по году
         public void SortBooksByYear()
         {
-            // TODO: Реализовать сортировку по году
+            var sorted = books.OrderBy(b => b.Year);
+            DisplayList(sorted);
         }
 
         // Найти самую дорогую книгу
