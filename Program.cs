@@ -189,7 +189,14 @@ namespace LibraryApp
         // Сгруппировать книги по авторам
         public void GroupBooksByAuthor()
         {
-            // TODO: Реализовать группировку по авторам
+            // LINQ-группировка по имени автора
+            var grouped = books.GroupBy(b => b.Author.Name);
+            foreach (var group in grouped)
+            {
+                Console.WriteLine($"\nАвтор: {group.Key} ({group.Count()} книг)");
+                foreach (var book in group)
+                    Console.WriteLine($"  - {book.Title}");
+            }
         }
 
         // Вывести все книги
