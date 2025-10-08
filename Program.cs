@@ -60,7 +60,14 @@ namespace LibraryApp
     {
         private List<Book> books = new List<Book>();
         private int nextId = 1;
-
+        public Library()
+        {
+            books.Add(new Book(nextId++, "Война и мир", new Author("Лев Толстой"), Genre.Fiction, 1821, 500));
+            books.Add(new Book(nextId++, "Идиот", new Author("Фёдор Достоевский"), Genre.Novel, 1821, 450));
+            books.Add(new Book(nextId++, "Десять негретят", new Author("Агата Кристи"), Genre.Detective, 1939, 600));
+            books.Add(new Book(nextId++, "Гарри Поттер и философский камень", new Author("Дж. К. Роулинг"), Genre.Fantasy, 1997, 350));
+            books.Add(new Book(nextId++, "После", new Author("Анна Тодд"), Genre.Romance, 2021, 379));
+        }
         // Добавить книгу
         public void AddBook()
         {
