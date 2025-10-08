@@ -71,8 +71,51 @@ namespace LibraryApp
         // Добавить книгу
         public void AddBook()
         {
-            // TODO: Реализовать ввод данных и добавление книги
-        }
+            Console.Write("Введите название книги: ");
+            string title = Console.ReadLine();
+
+            Console.Write("Введите имя автора: ");
+            string authorName = Console.ReadLine();
+
+            // Выводим список жанров для выбора
+            Console.WriteLine("Выберите жанр (введите номер):");
+            foreach (var genreName in Enum.GetNames(typeof(Genre)))
+            {
+                int index = Array.IndexOf(Enum.GetNames(typeof(Genre)), genreName);
+                Console.WriteLine($"{index + 1}. {genreName}");
+            }
+
+            // Проверка правильности ввода жанра
+            int genreIndex;
+            while (!int.TryParse(Console.ReadLine(), out genreIndex) || genreIndex < 1 || genreIndex > Enum.GetNames(typeof(Genre)).Length)
+            {
+                Console.WriteLine("Некорректный ввод. Повторите попытку:");
+            }
+            Genre genre = (Genre)(genreIndex - 1); // Преобразуем номер в элемент перечисления
+
+            // Ввод года с проверкой
+            Console.Write("Введите год издания: ");
+            int year;
+            while (!int.TryParse(Console.ReadLine(), out year) || year < 0)
+            {
+                Console.WriteLine("Некорректный год. Повторите ввод:");
+            }
+
+            // Ввод цены с проверкой
+            Console.Write("Введите цену книги: ");
+            decimal price;
+            while (!decimal.TryParse(Console.ReadLine(), out price) || price < 0)
+            {
+                Console.WriteLine("Некорректная цена. Повторите ввод:");
+            }
+
+            // Создаём новую книгу и добавляем в список
+            var author = new Author(authorName);
+            var book = new Book(nextId++, title, author, genre, year, price);
+            books.Add(book);
+
+            Console.WriteLine("Книга успешно добавлена!");
+        }        
 
         // Удалить книгу по ID
         public void RemoveBook()
