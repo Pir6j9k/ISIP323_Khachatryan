@@ -169,7 +169,11 @@ namespace LibraryApp
         // Найти самую дорогую книгу
         public void GetMostExpensiveBook()
         {
-            // TODO: Реализовать поиск самой дорогой книги
+            var book = books.OrderByDescending(b => b.Price).FirstOrDefault(); // Сортировка по убыванию цены
+            if (book != null)
+                Console.WriteLine($"Самая дорогая книга: {book}");
+            else
+                Console.WriteLine("Библиотека пуста.");
         }
 
         // Найти самую дешёвую книгу
