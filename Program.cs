@@ -139,7 +139,17 @@ namespace LibraryApp
         // Найти книги (по названию, автору, жанру)
         public void FindBooks()
         {
-            // TODO: Реализовать поиск книг
+            Console.Write("Введите строку поиска (название, автор или жанр): ");
+            string query = Console.ReadLine().ToLower(); // Приводим к нижнему регистру для нечувствительности к регистру
+
+            // LINQ-запрос: ищем совпадения в трёх полях
+            var foundBooks = books.Where(b =>
+                b.Title.ToLower().Contains(query) ||
+                b.Author.Name.ToLower().Contains(query) ||
+                b.Genre.ToString().ToLower().Contains(query)
+            );
+
+            DisplayList(foundBooks);
         }
 
         // Отсортировать книги по названию
