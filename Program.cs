@@ -202,7 +202,16 @@ namespace LibraryApp
         // Вывести все книги
         public void DisplayBooks()
         {
-            // TODO: Реализовать вывод всех книг
+            if (books.Any()) // Проверяем, есть ли книги
+                DisplayList(books);
+            else
+                Console.WriteLine("Библиотека пуста.");
+        }
+        // Универсальный метод вывода списка книг
+        private void DisplayList(IEnumerable<Book> list)
+        {
+            foreach (var b in list)
+                Console.WriteLine(b);
         }
     }
 
