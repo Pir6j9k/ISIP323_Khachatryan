@@ -120,7 +120,20 @@ namespace LibraryApp
         // Удалить книгу по ID
         public void RemoveBook()
         {
-            // TODO: Реализовать удаление книги по идентификатору
+            Console.Write("Введите ID книги для удаления: ");
+            if (int.TryParse(Console.ReadLine(), out int id))
+            {
+                var book = books.FirstOrDefault(b => b.Id == id); // Ищем книгу по ID
+                if (book != null)
+                {
+                    books.Remove(book);
+                    Console.WriteLine("Книга удалена.");
+                }
+                else
+                {
+                    Console.WriteLine("Книга с таким ID не найдена.");
+                }
+            }
         }
 
         // Найти книги (по названию, автору, жанру)
