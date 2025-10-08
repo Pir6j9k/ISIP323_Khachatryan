@@ -179,7 +179,11 @@ namespace LibraryApp
         // Найти самую дешёвую книгу
         public void GetCheapestBook()
         {
-            // TODO: Реализовать поиск самой дешёвой книги
+            var book = books.OrderBy(b => b.Price).FirstOrDefault(); // Сортировка по возрастанию
+            if (book != null)
+                Console.WriteLine($"Самая дешёвая книга: {book}");
+            else
+                Console.WriteLine("Библиотека пуста.");
         }
 
         // Сгруппировать книги по авторам
