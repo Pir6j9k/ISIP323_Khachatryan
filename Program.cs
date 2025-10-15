@@ -335,7 +335,19 @@ namespace University
         }
         static void DisplayMenu() // Метод для отображения главного меню
         {
-            
+            Console.WriteLine("\nГлавное меню");
+            Console.WriteLine("1. Добавить студента");
+            Console.WriteLine("2. Добавить преподавателя");
+            Console.WriteLine("3. Добавить курс");
+            Console.WriteLine("4. Записать студента на курс");
+            Console.WriteLine("5. Назначить преподавателя на курс");
+            Console.WriteLine("6. Показать всех студентов");
+            Console.WriteLine("7. Показать всех преподавателей");
+            Console.WriteLine("8. Показать все курсы");
+            Console.WriteLine("9. Показать курсы студента");
+            Console.WriteLine("10. Показать студентов курса");
+            Console.WriteLine("0. Выход");
+            Console.Write("Выберите опцию: ");
         }
         static void InitializeTestData() // Метод для инициализации тестовых данных
         {
