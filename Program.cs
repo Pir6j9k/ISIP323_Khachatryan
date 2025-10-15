@@ -437,7 +437,37 @@ namespace University
         }
         static void EnrollStudentInCourse() // Метод для записи студента на курс
         {
-            
+            Console.Write("Введите ID студента: ");
+            var studentId = Console.ReadLine();
+
+            Console.Write("Введите ID курса: ");
+            if (!int.TryParse(Console.ReadLine(), out int courseId))
+            {
+                Console.WriteLine("Некорректный ID курса");
+                return;
+            }
+
+            // Поиск студента и курса
+            var student = _universityManager.FindStudentById(studentId);
+            var course = _universityManager.FindCourseById(courseId);
+
+            if (student == null)
+            {
+                Console.WriteLine("Студент не найден");
+                return;
+            }
+
+            if (course == null)
+            {
+                Console.WriteLine("Курс не найден");
+                return;
+            }
+
+            // Запись студента на курс
+            if (student.EnrollInCourse(course))
+            {
+                Console.WriteLine($"Студент {student.Name} успешно записан на курс '{course.Name}'");
+            }
         }
         static void AssignTeacherToCourse() // Метод для назначения преподавателя на курс
         {
