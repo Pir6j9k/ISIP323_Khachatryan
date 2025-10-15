@@ -81,7 +81,17 @@ namespace University
 
         public void DisplayCourses() // Метод для отображения списка курсов студента
         {
-            
+            if (_courses.Count == 0)
+            {
+                Console.WriteLine("Студент не записан ни на один курс");
+                return;
+            }
+
+            Console.WriteLine($"Курсы студента {Name}:");
+            foreach (var course in _courses)
+            {
+                Console.WriteLine($"  - {course.Name}");
+            }
         }
     }
     public class Teacher : Person //Класс преподаватель - наследник Person
