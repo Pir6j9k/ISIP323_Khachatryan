@@ -166,7 +166,20 @@ namespace University
 
         public bool AddStudent(Student student) // Метод для добавления студента на курс
         {
+            if (student == null)
+            {
+                Console.WriteLine("Ошибка: Студент не может быть null");
+                return false;
+            }
 
+            if (_students.Contains(student))
+            {
+                Console.WriteLine("Ошибка: Студент уже записан на этот курс");
+                return false;
+            }
+
+            _students.Add(student);
+            return true;
         }
 
         public void DisplayInfo() // Метод для отображения информации о курсе
