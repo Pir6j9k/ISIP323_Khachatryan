@@ -242,7 +242,14 @@ namespace University
         }
         public bool AddCourse(Course course) // Метод добавления курса
         {
-            
+            if (course == null)
+            {
+                Console.WriteLine("Ошибка: Курс не может быть null");
+                return false;
+            }
+
+            _courses.Add(course);
+            return true;
         }
         public Student FindStudentById(string studentId) // Метод поиска студентов по ID
         {
