@@ -291,7 +291,16 @@ namespace University
         }
         public void DisplayAllCourses() // Метод для отображения всех курсов
         {
-            
+            if ( _courses.Count == 0)
+            {
+                Console.WriteLine(" В системе нет курсов :(");
+            }
+            Console.WriteLine("Все курсы: ");
+            foreach( var course in _courses)
+            {
+                course.DisplayInfo();
+                Console.WriteLine();
+            }
         }
     }
     public class Program // Главный класс программы
