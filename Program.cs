@@ -60,7 +60,41 @@ namespace University
     }
     public class UniversityManager //Основной класс для управления университетской системой
     {
+        public bool AddStudent(Student student) // Метод добавления студента
+        {
+            
+        }
+        public bool AddTeacher(Teacher teacher) // Метод добавления преподавателя
+        {
+            
+        }
+        public bool AddCourse(Course course) // Метод добавления курса
+        {
+            
+        }
+        public Student FindStudentById(string studentId) // Метод поиска студентов по ID
+        {
 
+        }
+        public Teacher FindTeacherById(string teacherId) // Метод поиска преподавателей по ID
+        {
+        }
+        public Course FindCourseById(int courseId) // Метод поиска курсов по ID
+        {
+
+        }
+        public void DisplayAllStudents() // Метод для отображения всех студентов
+        {
+            
+        }
+        public void DisplayAllTeachers() // Метод для отображения всех преподвателей
+        {
+            
+        }
+        public void DisplayAllCourses() // Метод для отображения всех курсов
+        {
+            
+        }
     }
     public class Program // Главный класс программы
     {
