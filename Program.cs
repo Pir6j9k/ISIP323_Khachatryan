@@ -253,7 +253,7 @@ namespace University
         }
         public Student FindStudentById(string studentId) // Метод поиска студентов по ID
         {
-
+            return _students.FirstOrDefault(s => s.StudentId == studentId);
         }
         public Teacher FindTeacherById(string teacherId) // Метод поиска преподавателей по ID
         {
