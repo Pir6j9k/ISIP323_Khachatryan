@@ -305,7 +305,7 @@ namespace University
     }
     public class Program // Главный класс программы
     {
-        private static UniversityManager _universiyManager = new UniversityManager();
+        private static UniversityManager _universityManager = new UniversityManager();
         static void Main(string[] args)
         {
             Console.WriteLine("");
