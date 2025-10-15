@@ -351,7 +351,32 @@ namespace University
         }
         static void InitializeTestData() // Метод для инициализации тестовых данных
         {
-            
+            // Создание тестовых преподавателей
+            var teacher1 = new Teacher("Иван Петров", 45, "i.petrov@university.ru");
+            var teacher2 = new Teacher("Мария Сидорова", 38, "m.sidorova@university.ru");
+            // Создание тестовых студентов
+            var student1 = new Student("Алексей Иванов", 20, "a.ivanov@student.ru");
+            var student2 = new Student("Елена Смирнова", 19, "e.smirnova@student.ru");
+            // Создание тестовых курсов
+            var course1 = new Course("Программирование на C#", "Основы программирования на языке C#");
+            var course2 = new Course("Высшая математика", "Математический анализ и линейная алгебра");
+
+            // Добавление сущностей в систему
+            _universityManager.AddTeacher(teacher1);
+            _universityManager.AddTeacher(teacher2);
+            _universityManager.AddStudent(student1);
+            _universityManager.AddStudent(student2);
+            _universityManager.AddCourse(course1);
+            _universityManager.AddCourse(course2);
+
+            // Установление связей между сущностями
+            teacher1.AssignToCourse(course1);
+            teacher2.AssignToCourse(course2);
+            student1.EnrollInCourse(course1);
+            student1.EnrollInCourse(course2);
+            student2.EnrollInCourse(course1);
+
+            Console.WriteLine("Тестовые данные загружены успешно");
         }
         static void AddStudent() // Метод для добавления нового студента
         {
