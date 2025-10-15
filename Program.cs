@@ -44,6 +44,16 @@ namespace University
     }
     public class Student : Person //Класс студента - наследник Person
     {
+        private List<Course> _courses;
+        public string StudentId { get; }
+        public IReadOnlyList<Course> Courses => _courses.AsReadOnly(); // Свойство только для чтения - защита внутренней коллекции
+        public Student(string name, int age, string email) // Конструктор вызывает конструктор базового класса
+            : base(name, age, email) 
+        {
+            // Генерация уникального ID студента
+            StudentId = $"{Id:00}";
+            _courses = new List<Course>();
+        }
         public bool EnrollInCourse(Course course) // Метод для записи студента на курс
         {
 
