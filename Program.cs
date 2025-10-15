@@ -471,7 +471,37 @@ namespace University
         }
         static void AssignTeacherToCourse() // Метод для назначения преподавателя на курс
         {
-            
+            Console.Write("Введите ID преподавателя: ");
+            var teacherId = Console.ReadLine();
+
+            Console.Write("Введите ID курса: ");
+            if (!int.TryParse(Console.ReadLine(), out int courseId))
+            {
+                Console.WriteLine("Некорректный ID курса");
+                return;
+            }
+
+            // Поиск преподавателя и курса
+            var teacher = _universityManager.FindTeacherById(teacherId);
+            var course = _universityManager.FindCourseById(courseId);
+
+            if (teacher == null)
+            {
+                Console.WriteLine("Преподаватель не найден");
+                return;
+            }
+
+            if (course == null)
+            {
+                Console.WriteLine("Курс не найден");
+                return;
+            }
+
+            // Назначение преподавателя на курс
+            if (teacher.AssignToCourse(course))
+            {
+                Console.WriteLine($"Преподаватель {teacher.Name} назначен на курс '{course.Name}'");
+            }
         }
         static void DisplayStudentCourses() // Метод для отображения курсов конкретного студента
         {
