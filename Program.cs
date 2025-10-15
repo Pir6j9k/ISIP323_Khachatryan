@@ -402,7 +402,24 @@ namespace University
         }
         static void AddTeacher() // Метод для добавления нового преподавателя
         {
-            
+            Console.Write("Введите имя преподавателя: ");
+            var name = Console.ReadLine();
+
+            Console.Write("Введите возраст: ");
+            if (!int.TryParse(Console.ReadLine(), out int age))
+            {
+                Console.WriteLine("Некорректный возраст");
+                return;
+            }
+
+            Console.Write("Введите email: ");
+            var email = Console.ReadLine();
+
+            var teacher = new Teacher(name, age, email);
+            if (_universityManager.AddTeacher(teacher))
+            {
+                Console.WriteLine($"Преподаватель {name} добавлен успешно. ID: {teacher.TeacherId}");
+            }
         }
         static void AddCourse() // Метод для добавления нового курса
         {
