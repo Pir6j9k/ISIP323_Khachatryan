@@ -208,6 +208,16 @@ namespace University
     }
     public class UniversityManager //Основной класс для управления университетской системой
     {
+        // Коллекции для хранения данных - инкапсуляция
+        private List<Student> _students;
+        private List<Teacher> _teachers;
+        private List<Course> _courses;
+        public UniversityManager() // Конструктор инициализирует пустые коллекции
+        {
+            _students = new List<Student>();
+            _teachers = new List<Teacher>();
+            _courses = new List<Course>();
+        }
         public bool AddStudent(Student student) // Метод добавления студента
         {
             
