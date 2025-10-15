@@ -126,6 +126,14 @@ namespace University
     }
     public class Course //Класс курсов
     {
+        private static int _nextId = 1;  
+        private List<Student> _students;  // Список студентов на курсе
+        // Свойства курса
+        public int CourseId { get; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public Teacher Teacher { get; private set; }
+        public IReadOnlyList<Student> Students => _students.AsReadOnly();  // свойство только для чтения - защита внутренней коллекции
         public bool AssignTeacher(Teacher teacher) // Метод для назначения преподавателя на курс
         {
 
