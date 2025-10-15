@@ -505,7 +505,17 @@ namespace University
         }
         static void DisplayStudentCourses() // Метод для отображения курсов конкретного студента
         {
-            
+            Console.Write("Введите ID студента: ");
+            var studentId = Console.ReadLine();
+
+            var student = _universityManager.FindStudentById(studentId);
+            if (student == null)
+            {
+                Console.WriteLine("Студент не найден");
+                return;
+            }
+
+            student.DisplayCourses();
         }
         static void DisplayCourseStudents() // Метод для отображения студентов конкретного курса
         {
