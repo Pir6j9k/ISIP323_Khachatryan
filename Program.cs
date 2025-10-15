@@ -117,7 +117,11 @@ namespace University
         }
         public override void DisplayInfo() // Метод вывода информации о преподавателях
         {
-            
+            Console.WriteLine($"Преподаватель: {Name}");
+            Console.WriteLine($"  ID: {TeacherId}");
+            Console.WriteLine($"  Возраст: {Age}");
+            Console.WriteLine($"  Email: {Email}");
+            Console.WriteLine($"  Количество ведомых курсов: {CoursesTeaching.Count}");
         }
     }
     public class Course //Класс курсов
