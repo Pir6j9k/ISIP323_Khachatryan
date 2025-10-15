@@ -56,7 +56,19 @@ namespace University
         }
         public bool EnrollInCourse(Course course) // Метод для записи студента на курс
         {
-
+            if (course == null)
+            {
+                Console.WriteLine("Ошибка: Курс не может быть null");
+                return false;
+            }
+            if (_courses.Contains(course))
+            {
+                Console.WriteLine("Ошибка: Студент уже записан на этот курс");
+                return false;
+            }
+            _courses.Add(course);
+            course.AddStudent(this);
+            return true;
         }
         public override void DisplayInfo() // Метод вывода данных о студенте
         {
