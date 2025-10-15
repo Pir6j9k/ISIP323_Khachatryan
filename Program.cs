@@ -323,9 +323,9 @@ namespace University
                     case "3": AddCourse(); break;
                     case "4": EnrollStudentInCourse(); break;
                     case "5": AssignTeacherToCourse(); break;
-                    case "6": _universiyManager.DisplayAllStudents(); break;
-                    case "7": _universiyManager.DisplayAllTeachers(); break;
-                    case "8": _universiyManager.DisplayAllCourses(); break;
+                    case "6": _universityManager.DisplayAllStudents(); break;
+                    case "7": _universityManager.DisplayAllTeachers(); break;
+                    case "8": _universityManager.DisplayAllCourses(); break;
                     case "9": DisplayStudentCourses(); break;
                     case "10": DisplayCourseStudents(); break;
                     case "0": exit = true; break;
