@@ -278,7 +278,16 @@ namespace University
         }
         public void DisplayAllTeachers() // Метод для отображения всех преподвателей
         {
-            
+            if (_teachers.Count == 0)
+            {
+                Console.WriteLine("В системе нет преподавателей :(");
+            }
+            Console.WriteLine("Все преподаватели: ");
+            foreach(var teacher in _teachers)
+            {
+                teacher.DisplayInfo();
+                Console.WriteLine();
+            }
         }
         public void DisplayAllCourses() // Метод для отображения всех курсов
         {
