@@ -134,6 +134,21 @@ namespace University
         public string Description { get; private set; }
         public Teacher Teacher { get; private set; }
         public IReadOnlyList<Student> Students => _students.AsReadOnly();  // свойство только для чтения - защита внутренней коллекции
+        public Course(string name, string description)
+        {
+            // Валидация названия курса
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Ошибка: Название курса не может быть пустым");
+                return;
+            }
+
+            CourseId = _nextId++;
+            Name = name;
+            Description = description ?? "Описание отсутствует";
+            _students = new List<Student>();
+            Teacher = null;  // Изначально преподаватель не назначен
+        }
         public bool AssignTeacher(Teacher teacher) // Метод для назначения преподавателя на курс
         {
 
