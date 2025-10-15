@@ -261,7 +261,7 @@ namespace University
         }
         public Course FindCourseById(int courseId) // Метод поиска курсов по ID
         {
-
+            return _courses.FirstOrDefault(c => c.CourseId == courseId);
         }
         public void DisplayAllStudents() // Метод для отображения всех студентов
         {
