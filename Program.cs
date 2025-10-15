@@ -380,7 +380,25 @@ namespace University
         }
         static void AddStudent() // Метод для добавления нового студента
         {
-            
+            Console.Write("Введите имя студента: ");
+            var name = Console.ReadLine();
+
+            Console.Write("Введите возраст: ");
+            if (!int.TryParse(Console.ReadLine(), out int age))
+            {
+                Console.WriteLine("Некорректный возраст");
+                return;
+            }
+
+            Console.Write("Введите email: ");
+            var email = Console.ReadLine();
+
+            // Создание и добавление студента
+            var student = new Student(name, age, email);
+            if (_universityManager.AddStudent(student))
+            {
+                Console.WriteLine($"Студент {name} добавлен успешно. ID: {student.StudentId}");
+            }
         }
         static void AddTeacher() // Метод для добавления нового преподавателя
         {
