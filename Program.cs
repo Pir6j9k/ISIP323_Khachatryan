@@ -423,7 +423,17 @@ namespace University
         }
         static void AddCourse() // Метод для добавления нового курса
         {
-            
+            Console.Write("Введите название курса: ");
+            var name = Console.ReadLine();
+
+            Console.Write("Введите описание курса: ");
+            var description = Console.ReadLine();
+
+            var course = new Course(name, description);
+            if (_universityManager.AddCourse(course))
+            {
+                Console.WriteLine($"Курс '{name}' добавлен успешно. ID: {course.CourseId}");
+            }
         }
         static void EnrollStudentInCourse() // Метод для записи студента на курс
         {
