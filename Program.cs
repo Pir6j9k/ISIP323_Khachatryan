@@ -184,7 +184,11 @@ namespace University
 
         public void DisplayInfo() // Метод для отображения информации о курсе
         {
-
+            Console.WriteLine($"Курс: {Name}");
+            Console.WriteLine($"  ID: {CourseId}");
+            Console.WriteLine($"  Описание: {Description}");
+            Console.WriteLine($"  Преподаватель: {Teacher?.Name ?? "Не назначен"}");
+            Console.WriteLine($"  Количество студентов: {_students.Count}");
         }
 
         public void DisplayStudents() // Метод для отображения списка студентов на курсе
