@@ -98,6 +98,41 @@ namespace University
     }
     public class Program // Главный класс программы
     {
-
+        static void DisplayMenu() // Метод для отображения главного меню
+        {
+            
+        }
+        static void InitializeTestData() // Метод для инициализации тестовых данных
+        {
+            
+        }
+        static void AddStudent() // Метод для добавления нового студента
+        {
+            
+        }
+        static void AddTeacher() // Метод для добавления нового преподавателя
+        {
+            
+        }
+        static void AddCourse() // Метод для добавления нового курса
+        {
+            
+        }
+        static void EnrollStudentInCourse() // Метод для записи студента на курс
+        {
+            
+        }
+        static void AssignTeacherToCourse() // Метод для назначения преподавателя на курс
+        {
+            
+        }
+        static void DisplayStudentCourses() // Метод для отображения курсов конкретного студента
+        {
+            
+        }
+        static void DisplayCourseStudents() // Метод для отображения студентов конкретного курса
+        {
+            
+        }
     }
 }
