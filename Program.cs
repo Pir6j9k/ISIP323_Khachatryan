@@ -220,7 +220,14 @@ namespace University
         }
         public bool AddStudent(Student student) // Метод добавления студента
         {
-            
+            if (student == null)
+            {
+                Console.WriteLine("Ошибка: Студент не может быть null");
+                return false;
+            }
+
+            _students.Add(student);
+            return true;
         }
         public bool AddTeacher(Teacher teacher) // Метод добавления преподавателя
         {
