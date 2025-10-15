@@ -106,7 +106,14 @@ namespace University
         }
         public bool AssignToCourse(Course course) // Метод для назначения преподавателя на курс
         {
-            
+            if (course == null)
+            {
+                Console.WriteLine("Ошибка: Курс не может быть null");
+                return false;
+            }
+            course.AssignTeacher(this);
+            CoursesTeaching.Add(course);
+            return true;
         }
         public override void DisplayInfo() // Метод вывода информации о преподавателях
         {
