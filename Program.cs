@@ -305,6 +305,34 @@ namespace University
     }
     public class Program // Главный класс программы
     {
+        private static UniversityManager _universiyManager = new UniversityManager();
+        static void Main(string[] args)
+        {
+            Console.WriteLine("");
+            InitializeTestData(); // Инициализация тестовыми данными для демонстрации
+            // Основной цикл программы
+            bool exit = false;
+            while (!exit)
+            {
+                DisplayMenu();
+                var choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1": AddStudent(); break;
+                    case "2": AddTeacher(); break;
+                    case "3": AddCourse(); break;
+                    case "4": EnrollStudentInCourse(); break;
+                    case "5": AssignTeacherToCourse(); break;
+                    case "6": _universiyManager.DisplayAllStudents(); break;
+                    case "7": _universiyManager.DisplayAllTeachers(); break;
+                    case "8": _universiyManager.DisplayAllCourses(); break;
+                    case "9": DisplayStudentCourses(); break;
+                    case "10": DisplayCourseStudents(); break;
+                    case "0": exit = true; break;
+                    default: Console.WriteLine("Неверный выбор :("); break;
+                }
+            }
+        }
         static void DisplayMenu() // Метод для отображения главного меню
         {
             
