@@ -72,7 +72,11 @@ namespace University
         }
         public override void DisplayInfo() // Метод вывода данных о студенте
         {
-           
+            Console.WriteLine($"Студент: {Name}");
+            Console.WriteLine($"  ID: {StudentId}");
+            Console.WriteLine($"  Возраст: {Age}");
+            Console.WriteLine($"  Email: {Email}");
+            Console.WriteLine($"  Количество курсов: {_courses.Count}");
         }
 
         public void DisplayCourses() // Метод для отображения списка курсов студента
