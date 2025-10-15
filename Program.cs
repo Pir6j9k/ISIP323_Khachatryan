@@ -7,7 +7,40 @@ namespace University
 {
     public abstract class Person // Базовый класс для всех людей в университете
     {
+        private static int _nextId = 1;  // Статическая переменная для генерации уникальных ID
 
+        // Свойства с защитой через инкапсуляцию (доступны только для чтения извне)
+        public int Id { get; }
+        public string Name { get; private set; }
+        public int Age { get; private set; }
+        public string Email { get; private set; }
+        protected Person(string name, int age, string email) // Конструктор базового класса с валидацией данных
+        {
+            // Валидация входных данных
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Ошибка: Имя не может быть пустым");
+                return;
+            }
+
+            if (age <= 0 || age > 120)
+            {
+                Console.WriteLine("Ошибка: Возраст должен быть от 1 до 120 лет");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
+            {
+                Console.WriteLine("Ошибка: Некорректный email");
+                return;
+            }
+            // Инициализация свойств
+            Id = _nextId++;
+            Name = name;
+            Age = age;
+            Email = email;
+        }
+        public abstract void DisplayInfo(); // Абстрактный метод, демонстрирующий принцип полиморфизма (должен быть реализован в наследниках)
     }
     public class Student : Person //Класс студента - наследник Person
     {
