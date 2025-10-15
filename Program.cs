@@ -27,7 +27,14 @@ namespace University
     }
     public class Teacher : Person //Класс преподаватель - наследник Person
     {
-
+        public bool AssignToCourse(Course course) // Метод для назначения преподавателя на курс
+        {
+            
+        }
+        public override void DisplayInfo() // Метод вывода информации о преподавателях
+        {
+            
+        }
     }
     public class Course //Класс курсов
     {
