@@ -96,6 +96,14 @@ namespace University
     }
     public class Teacher : Person //Класс преподаватель - наследник Person
     {
+        public string TeacherId { get; }
+        public List<Course> CoursesTeaching { get; }
+        public Teacher(string name, int age, string email) 
+            : base(name, age, email)
+        {
+            TeacherId = $"{Id:00}";
+            CoursesTeaching = new List<Course>();
+        }
         public bool AssignToCourse(Course course) // Метод для назначения преподавателя на курс
         {
             
