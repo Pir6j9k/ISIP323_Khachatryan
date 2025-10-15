@@ -231,7 +231,14 @@ namespace University
         }
         public bool AddTeacher(Teacher teacher) // Метод добавления преподавателя
         {
-            
+            if (teacher == null)
+            {
+                Console.WriteLine("Ошибка: Преподаватель не может быть null");
+                return false;
+            }
+
+            _teachers.Add(teacher);
+            return true;
         }
         public bool AddCourse(Course course) // Метод добавления курса
         {
