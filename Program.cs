@@ -193,7 +193,17 @@ namespace University
 
         public void DisplayStudents() // Метод для отображения списка студентов на курсе
         {
+            if (_students.Count == 0)
+            {
+                Console.WriteLine("На курс не записан ни один студент");
+                return;
+            }
 
+            Console.WriteLine($"Студенты на курсе '{Name}':");
+            foreach (var student in _students)
+            {
+                Console.WriteLine($"  - {student.Name} ({student.StudentId})");
+            }
         }
     }
     public class UniversityManager //Основной класс для управления университетской системой
