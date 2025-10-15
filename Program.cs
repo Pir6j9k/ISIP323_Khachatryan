@@ -38,7 +38,25 @@ namespace University
     }
     public class Course //Класс курсов
     {
+        public bool AssignTeacher(Teacher teacher) // Метод для назначения преподавателя на курс
+        {
 
+        }
+
+        public bool AddStudent(Student student) // Метод для добавления студента на курс
+        {
+
+        }
+
+        public void DisplayInfo() // Метод для отображения информации о курсе
+        {
+
+        }
+
+        public void DisplayStudents() // Метод для отображения списка студентов на курсе
+        {
+
+        }
     }
     public class UniversityManager //Основной класс для управления университетской системой
     {
