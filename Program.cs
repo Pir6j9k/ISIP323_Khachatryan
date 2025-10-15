@@ -519,7 +519,21 @@ namespace University
         }
         static void DisplayCourseStudents() // Метод для отображения студентов конкретного курса
         {
-            
+            Console.Write("Введите ID курса: ");
+            if (!int.TryParse(Console.ReadLine(), out int courseId))
+            {
+                Console.WriteLine("Некорректный ID курса");
+                return;
+            }
+
+            var course = _universityManager.FindCourseById(courseId);
+            if (course == null)
+            {
+                Console.WriteLine("Курс не найден");
+                return;
+            }
+
+            course.DisplayStudents();
         }
     }
 }
