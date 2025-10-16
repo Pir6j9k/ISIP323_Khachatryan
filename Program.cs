@@ -7,7 +7,7 @@ namespace University
 {
     public abstract class Person // Базовый класс для всех людей в университете
     {
-        private static int _nextId = 1;  // Статическая переменная для генерации уникальных ID
+        private static int nextId = 1;  // Статическая переменная для генерации уникальных ID
 
         // Свойства с защитой через инкапсуляцию (доступны только для чтения извне)
         public int Id { get; }
@@ -35,7 +35,7 @@ namespace University
                 return;
             }
             // Инициализация свойств
-            Id = _nextId++;
+            Id = nextId++;
             Name = name;
             Age = age;
             Email = email;
@@ -44,15 +44,15 @@ namespace University
     }
     public class Student : Person //Класс студента - наследник Person
     {
-        private List<Course> _courses;
+        private List<Course> courses;
         public string StudentId { get; }
-        public IReadOnlyList<Course> Courses => _courses.AsReadOnly(); // Свойство только для чтения - защита внутренней коллекции
+        public IReadOnlyList<Course> Courses => courses.AsReadOnly(); // Свойство только для чтения - защита внутренней коллекции
         public Student(string name, int age, string email) // Конструктор вызывает конструктор базового класса
             : base(name, age, email) 
         {
             // Генерация уникального ID студента
             StudentId = $"{Id:00}";
-            _courses = new List<Course>();
+            courses = new List<Course>();
         }
         public bool EnrollInCourse(Course course) // Метод для записи студента на курс
         {
@@ -61,12 +61,12 @@ namespace University
                 Console.WriteLine("Ошибка: Курс не может быть null");
                 return false;
             }
-            if (_courses.Contains(course))
+            if (courses.Contains(course))
             {
                 Console.WriteLine("Ошибка: Студент уже записан на этот курс");
                 return false;
             }
-            _courses.Add(course);
+            courses.Add(course);
             course.AddStudent(this);
             return true;
         }
@@ -76,19 +76,19 @@ namespace University
             Console.WriteLine($"  ID: {StudentId}");
             Console.WriteLine($"  Возраст: {Age}");
             Console.WriteLine($"  Email: {Email}");
-            Console.WriteLine($"  Количество курсов: {_courses.Count}");
+            Console.WriteLine($"  Количество курсов: {courses.Count}");
         }
 
         public void DisplayCourses() // Метод для отображения списка курсов студента
         {
-            if (_courses.Count == 0)
+            if (courses.Count == 0)
             {
                 Console.WriteLine("Студент не записан ни на один курс");
                 return;
             }
 
             Console.WriteLine($"Курсы студента {Name}:");
-            foreach (var course in _courses)
+            foreach (var course in courses)
             {
                 Console.WriteLine($"  - {course.Name}");
             }
@@ -126,14 +126,14 @@ namespace University
     }
     public class Course //Класс курсов
     {
-        private static int _nextId = 1;  
-        private List<Student> _students;  // Список студентов на курсе
+        private static int nextId = 1;  
+        private List<Student> students;  // Список студентов на курсе
         // Свойства курса
         public int CourseId { get; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public Teacher Teacher { get; private set; }
-        public IReadOnlyList<Student> Students => _students.AsReadOnly();  // свойство только для чтения - защита внутренней коллекции
+        public IReadOnlyList<Student> Students => students.AsReadOnly();  // свойство только для чтения - защита внутренней коллекции
         public Course(string name, string description)
         {
             // Валидация названия курса
@@ -143,10 +143,10 @@ namespace University
                 return;
             }
 
-            CourseId = _nextId++;
+            CourseId = nextId++;
             Name = name;
             Description = description ?? "Описание отсутствует";
-            _students = new List<Student>();
+            students = new List<Student>();
             Teacher = null;  // Изначально преподаватель не назначен
         }
         public bool AssignTeacher(Teacher teacher) // Метод для назначения преподавателя на курс
@@ -172,13 +172,13 @@ namespace University
                 return false;
             }
 
-            if (_students.Contains(student))
+            if (students.Contains(student))
             {
                 Console.WriteLine("Ошибка: Студент уже записан на этот курс");
                 return false;
             }
 
-            _students.Add(student);
+            students.Add(student);
             return true;
         }
 
@@ -188,19 +188,19 @@ namespace University
             Console.WriteLine($"  ID: {CourseId}");
             Console.WriteLine($"  Описание: {Description}");
             Console.WriteLine($"  Преподаватель: {Teacher?.Name ?? "Не назначен"}");
-            Console.WriteLine($"  Количество студентов: {_students.Count}");
+            Console.WriteLine($"  Количество студентов: {students.Count}");
         }
 
         public void DisplayStudents() // Метод для отображения списка студентов на курсе
         {
-            if (_students.Count == 0)
+            if (students.Count == 0)
             {
                 Console.WriteLine("На курс не записан ни один студент");
                 return;
             }
 
             Console.WriteLine($"Студенты на курсе '{Name}':");
-            foreach (var student in _students)
+            foreach (var student in students)
             {
                 Console.WriteLine($"  - {student.Name} ({student.StudentId})");
             }
@@ -306,7 +306,7 @@ namespace University
     }
     public class Program // Главный класс программы
     {
-        private static UniversityManager _universityManager = new UniversityManager();
+        private static UniversityManager universityManager = new UniversityManager();
         static void Main(string[] args)
         {
             Console.WriteLine("");
@@ -324,9 +324,9 @@ namespace University
                     case "3": AddCourse(); break;
                     case "4": EnrollStudentInCourse(); break;
                     case "5": AssignTeacherToCourse(); break;
-                    case "6": _universityManager.DisplayAllStudents(); break;
-                    case "7": _universityManager.DisplayAllTeachers(); break;
-                    case "8": _universityManager.DisplayAllCourses(); break;
+                    case "6": universityManager.DisplayAllStudents(); break;
+                    case "7": universityManager.DisplayAllTeachers(); break;
+                    case "8": universityManager.DisplayAllCourses(); break;
                     case "9": DisplayStudentCourses(); break;
                     case "10": DisplayCourseStudents(); break;
                     case "0": exit = true; break;
@@ -363,12 +363,12 @@ namespace University
             var course2 = new Course("Высшая математика", "Математический анализ и линейная алгебра");
 
             // Добавление сущностей в систему
-            _universityManager.AddTeacher(teacher1);
-            _universityManager.AddTeacher(teacher2);
-            _universityManager.AddStudent(student1);
-            _universityManager.AddStudent(student2);
-            _universityManager.AddCourse(course1);
-            _universityManager.AddCourse(course2);
+            universityManager.AddTeacher(teacher1);
+            universityManager.AddTeacher(teacher2);
+            universityManager.AddStudent(student1);
+            universityManager.AddStudent(student2);
+            universityManager.AddCourse(course1);
+            universityManager.AddCourse(course2);
 
             // Установление связей между сущностями
             teacher1.AssignToCourse(course1);
@@ -396,7 +396,7 @@ namespace University
 
             // Создание и добавление студента
             var student = new Student(name, age, email);
-            if (_universityManager.AddStudent(student))
+            if (universityManager.AddStudent(student))
             {
                 Console.WriteLine($"Студент {name} добавлен успешно. ID: {student.StudentId}");
             }
@@ -417,7 +417,7 @@ namespace University
             var email = Console.ReadLine();
 
             var teacher = new Teacher(name, age, email);
-            if (_universityManager.AddTeacher(teacher))
+            if (universityManager.AddTeacher(teacher))
             {
                 Console.WriteLine($"Преподаватель {name} добавлен успешно. ID: {teacher.TeacherId}");
             }
@@ -431,7 +431,7 @@ namespace University
             var description = Console.ReadLine();
 
             var course = new Course(name, description);
-            if (_universityManager.AddCourse(course))
+            if (universityManager.AddCourse(course))
             {
                 Console.WriteLine($"Курс '{name}' добавлен успешно. ID: {course.CourseId}");
             }
@@ -449,8 +449,8 @@ namespace University
             }
 
             // Поиск студента и курса
-            var student = _universityManager.FindStudentById(studentId);
-            var course = _universityManager.FindCourseById(courseId);
+            var student = universityManager.FindStudentById(studentId);
+            var course = universityManager.FindCourseById(courseId);
 
             if (student == null)
             {
@@ -483,8 +483,8 @@ namespace University
             }
 
             // Поиск преподавателя и курса
-            var teacher = _universityManager.FindTeacherById(teacherId);
-            var course = _universityManager.FindCourseById(courseId);
+            var teacher = universityManager.FindTeacherById(teacherId);
+            var course = universityManager.FindCourseById(courseId);
 
             if (teacher == null)
             {
@@ -509,7 +509,7 @@ namespace University
             Console.Write("Введите ID студента: ");
             var studentId = Console.ReadLine();
 
-            var student = _universityManager.FindStudentById(studentId);
+            var student = universityManager.FindStudentById(studentId);
             if (student == null)
             {
                 Console.WriteLine("Студент не найден");
@@ -527,7 +527,7 @@ namespace University
                 return;
             }
 
-            var course = _universityManager.FindCourseById(courseId);
+            var course = universityManager.FindCourseById(courseId);
             if (course == null)
             {
                 Console.WriteLine("Курс не найден");
