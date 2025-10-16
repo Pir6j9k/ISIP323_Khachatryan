@@ -209,14 +209,15 @@ namespace University
     public class UniversityManager //Основной класс для управления университетской системой
     {
         // Коллекции для хранения данных - инкапсуляция
-        private List<Student> _students;
-        private List<Teacher> _teachers;
-        private List<Course> _courses;
+        private List<Student> students;
+        private List<Teacher> teachers;
+        private List<Course> courses;
+        
         public UniversityManager() // Конструктор инициализирует пустые коллекции
         {
-            _students = new List<Student>();
-            _teachers = new List<Teacher>();
-            _courses = new List<Course>();
+            students = new List<Student>();
+            teachers = new List<Teacher>();
+            courses = new List<Course>();
         }
         public bool AddStudent(Student student) // Метод добавления студента
         {
@@ -226,7 +227,7 @@ namespace University
                 return false;
             }
 
-            _students.Add(student);
+            students.Add(student);
             return true;
         }
         public bool AddTeacher(Teacher teacher) // Метод добавления преподавателя
@@ -237,7 +238,7 @@ namespace University
                 return false;
             }
 
-            _teachers.Add(teacher);
+            teachers.Add(teacher);
             return true;
         }
         public bool AddCourse(Course course) // Метод добавления курса
@@ -248,29 +249,29 @@ namespace University
                 return false;
             }
 
-            _courses.Add(course);
+            courses.Add(course);
             return true;
         }
         public Student FindStudentById(string studentId) // Метод поиска студентов по ID
         {
-            return _students.FirstOrDefault(s => s.StudentId == studentId);
+            return students.FirstOrDefault(s => s.StudentId == studentId);
         }
         public Teacher FindTeacherById(string teacherId) // Метод поиска преподавателей по ID
         {
-            return _teachers.FirstOrDefault(t => t.TeacherId == teacherId);
+            return teachers.FirstOrDefault(t => t.TeacherId == teacherId);
         }
         public Course FindCourseById(int courseId) // Метод поиска курсов по ID
         {
-            return _courses.FirstOrDefault(c => c.CourseId == courseId);
+            return courses.FirstOrDefault(c => c.CourseId == courseId);
         }
         public void DisplayAllStudents() // Метод для отображения всех студентов
         {
-            if (_students.Count == 0)
+            if (students.Count == 0)
             {
                 Console.WriteLine("В системе нет студентов :(");
             }
             Console.WriteLine("Все студенты: ");
-            foreach (var student in _students)
+            foreach (var student in students)
             {
                 student.DisplayInfo();
                 Console.WriteLine();
@@ -278,12 +279,12 @@ namespace University
         }
         public void DisplayAllTeachers() // Метод для отображения всех преподвателей
         {
-            if (_teachers.Count == 0)
+            if (teachers.Count == 0)
             {
                 Console.WriteLine("В системе нет преподавателей :(");
             }
             Console.WriteLine("Все преподаватели: ");
-            foreach(var teacher in _teachers)
+            foreach(var teacher in teachers)
             {
                 teacher.DisplayInfo();
                 Console.WriteLine();
@@ -291,12 +292,12 @@ namespace University
         }
         public void DisplayAllCourses() // Метод для отображения всех курсов
         {
-            if ( _courses.Count == 0)
+            if ( courses.Count == 0)
             {
                 Console.WriteLine(" В системе нет курсов :(");
             }
             Console.WriteLine("Все курсы: ");
-            foreach( var course in _courses)
+            foreach( var course in courses)
             {
                 course.DisplayInfo();
                 Console.WriteLine();
