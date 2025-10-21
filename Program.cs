@@ -210,8 +210,8 @@ public class Goblin: Enemy
     public Goblin() 
         : base("Гоблин", "Гоблин", 30, 8, 3)
     {
-
-    }  
+        CritChance = 0.2; // 20% шанс крит. урона
+    }
 }
 public class Skeleton: Enemy
 {
@@ -219,11 +219,12 @@ public class Skeleton: Enemy
     public Skeleton() 
         : base("Скелет", "Скелет", 25, 10, 2)
     {
+        IgnoreArmor = true; // Скелет игнорирует броню игрока
 
     }
     protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности скелета
     {
-
+        Console.WriteLine($"{Name} игнорирует защиту игрока!");
     }
 }
 public class Mage: Enemy
@@ -232,20 +233,25 @@ public class Mage: Enemy
     public Mage() 
         : base("Маг", "Маг", 20, 12, 1)
     {
-
+        FreezeChance = 0.25; // 25% шанс заморозки игрока
     }
     protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности мага
     {
-
+        if (random.NextDouble() < FreezeChance) // Проверка срабатывания заморозки
+        {
+            player.IsFrozen = true;
+            Console.WriteLine($"{Name} замораживает игрока! Игрок пропустит следующий ход.");
+        }
     }
 }
 public class Boss: Enemy
 {
+    public string BossType { get; set; }
     // Конструктор босса
     public Boss(string name, string bossType, int health, int attack, int defense)
         : base(name, "Босс", health, attack, defense)
     {
-
+        BossType = bossType;
     }
 }
 public class VVG : Boss
