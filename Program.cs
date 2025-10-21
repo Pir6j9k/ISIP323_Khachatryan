@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Xml.Linq;
 
 public class Item
@@ -210,7 +211,22 @@ public class PestovCMM: Boss
 }
 public class Chest
 {
+    public Item Open() // Метод открытия сундука
+    {
 
+    }
+    private Item GenerateRandomItem() // Приватный метод генерации случайного предмета
+    {
+
+    }
+    private Weapon GenerateRandomWeapon() // Приватный метод генерации случайного оружия
+    {
+
+    }
+    private Armor GenerateRandomArmor() // Приватный метод генерации случайных доспехов
+    {
+        
+    }
 }
 public class Game
 {
