@@ -147,21 +147,61 @@ public class Player
 }
 public class Enemy
 {
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public int Health { get; set; }
+    public int MaxHealth { get; set; }
+    public int Attack { get; set; }
+    public int Defense { get; set; }
+    public double CritChance { get; set; }
+    public double FreezeChance { get; set; }
+    public bool IgnoreArmor { get; set; }
+    protected Random random;
+    public Enemy(string name, string type, int health, int attack, int defense) // Конструктор класса Enemy
+    {
+        Name = name;
+        Type = type;
+        MaxHealth = health;
+        Health = MaxHealth;
+        Attack = attack;
+        Defense = defense;
+        CritChance = 0;
+        FreezeChance = 0;
+        IgnoreArmor = false;
+        random = new Random();
+    }
+
     public virtual void AttackPlayer(Player player) // Виртуальный метод атаки игрока
     {
-       
+       if (player.IsFrozen)
+       {
+            Console.WriteLine($"{Name} атакует, но игрок заморожен и не может действовать!");
+            player.IsFrozen = false;
+            return;
+       }
+       int damage = Attack;
+       if (random.NextDouble() < CritChance) // Проверка на критический удар
+       {
+            damage = (int)(damage * 1.5);
+            Console.WriteLine($"{Name} наносит критический удар!");
+       }
+       ApplySpecialAbility(player); // Применение особой способности врага
+       int finalDamage = IgnoreArmor ? damage : Math.Max(1, damage - player.GetTotalDefense() / 2); // Игнорирование брони или уменьшение урона
+       Console.WriteLine($"{Name} атакует и наносит {finalDamage} урона!");
+       player.TakeDamage(finalDamage);
     }
     protected virtual void ApplySpecialAbility(Player player)  // Виртуальный метод применения особой способности
     {
-
+        // Базовая реализация без особых способностей
     }
     public void TakeDamage(int damage) // Метод получения урона врагом
     {
-
+        Health = Math.Max(0, Health -  damage);
+        Console.WriteLine($"{Name} получает {damage} урона. HP:{Health}/{MaxHealth}");
     }
     public bool IsAlive() // Метод проверки, жив ли враг
     {
-
+        return Health > 0;
     }
 }
 public class Goblin: Enemy
