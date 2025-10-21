@@ -26,24 +26,13 @@ public class Weapon: Item
 {
     // Конструктор класса Weapon, вызывает базовый конструктор с типом "Оружие"
     public Weapon(string name, int attackBonus) 
-        : base(name, "Оружие", attackBonus, 0) 
-    {
-
-    } 
-    public override void ShowStats() // Переопределенный метод отображения статистики для оружия
-    {
-        
-    }
+        : base(name, "Оружие", attackBonus, 0) { }
 }
 public class Armor: Item
 {
     // Конструктор класса Armor, вызывает базовый конструктор с типом "Доспехи"
     public Armor(string name, int defenseBonus)
         : base(name, "Доспехи", 0, defenseBonus) { } 
-    public override void ShowStats() // Переопределенный метод отображения статистики для доспехов
-    {
-        
-    }
 }
 public class Potion: Item
 {
@@ -52,11 +41,9 @@ public class Potion: Item
         : base(name, "Зелье") { } 
     public override void Use(Player player) // Переопределенный метод использования зелья
     {
-        
-    }
-    public override void ShowStats() // Переопределенный метод отображения статистики для зелья
-    {
-
+        int healAmount = player.MaxHealth - player.Health;
+        player.Heal(player.MaxHealth);
+        Console.WriteLine($"{Name} полностью восстановил здоровье! (+{healAmount} HP)");
     }
 }
 public class Player
