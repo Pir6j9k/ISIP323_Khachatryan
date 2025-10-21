@@ -314,21 +314,61 @@ public class PestovCMM: Boss
 }
 public class Chest
 {
+    public Item Contents { get; set; }
+    private Random random;
+    public Chest() // Конструктор сундука
+    {
+        random = new Random();
+        Contents = GenerateRandomItem();
+    }
     public Item Open() // Метод открытия сундука
     {
-
+        Console.WriteLine("Вы нашли сундук!");
+        Console.WriteLine($"Внутри: {Contents.Name} (ATK/DF:{Contents.AttackBonus}/{Contents.DefenseBonus})");
+        return Contents;
     }
     private Item GenerateRandomItem() // Приватный метод генерации случайного предмета
     {
-
+        var itemTypes = new List<string> { "Оружие", "Доспехи", "Зелье" };
+        string selectedType = itemTypes[random.Next(itemTypes.Count)]; // Случайный выбор типа предмета
+        switch (selectedType)
+        {
+            case "Оружие":
+                    return GenerateRandomWeapon();                
+            case "Доспехи":                
+                    return GenerateRandomArmor();
+            default: 
+                return new Potion("Зелье лечения");
+        }
     }
     private Weapon GenerateRandomWeapon() // Приватный метод генерации случайного оружия
     {
-
+        var weapons = new List<Weapon>
+        {
+            new Weapon("Кинжал", 8),
+            new Weapon("Меч", 12),
+            new Weapon("Топор", 15),
+            new Weapon("Посох мага", 10),
+            new Weapon("Лук", 11),
+            new Weapon("Булава", 13),
+            new Weapon("Рапира", 14),
+            new Weapon("Двуручный меч", 18)
+        };
+        return weapons[random.Next(weapons.Count)]; // Возврат случайного оружия из списка
     }
     private Armor GenerateRandomArmor() // Приватный метод генерации случайных доспехов
     {
-        
+        var armors = new List<Armor>
+        {
+            new Armor("Кожаная броня", 6),
+            new Armor("Кольчуга", 10),
+            new Armor("Латные доспехи", 15),
+            new Armor("Мантия мага", 8),
+            new Armor("Щит", 12),
+            new Armor("Драконья чешуя", 20),
+            new Armor("Броня костяного стража", 16)
+        };
+        return armors[random.Next(armors.Count)]; // Возврат случайных доспехов из списка
     }
 }
 public class Game
