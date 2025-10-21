@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Numerics;
 using System.Xml.Linq;
 
 public class Item
@@ -230,7 +231,50 @@ public class Chest
 }
 public class Game
 {
+    public void StartGame() // Основной метод запуска игры
+    {
 
+    }
+    private void GameLoop() // Основной игровой цикл
+    {
+
+    }
+    private void HandleTurn() // Метод обработки одного хода
+    {
+
+    }
+    private void HandleEnemy() // Метод обработки встречи с обычным врагом
+    {
+
+    }    
+    private void HandleBoss() // Метод обработки встречи с боссом
+    {
+
+    }
+    private void HandleChest() // Метод обработки найденного сундука
+    {
+
+    }
+    private void OfferEquipmentChoice(Item newItem) // Метод предложения выбора экипировки
+    {
+
+    }
+    private void Battle(Enemy enemy) // Метод проведения боя
+    {
+
+    }
+    private void ShowBattleMenu() // Метод отображения меню боя
+    {
+
+    }
+    private Enemy GenerateRandomEnemy() // Метод генерации случайного обычного врага
+    {
+
+    }
+    private Enemy GenerateRandomBoss() // Метод генерации случайного босса
+    {
+
+    }
 }
 class Program
 {
