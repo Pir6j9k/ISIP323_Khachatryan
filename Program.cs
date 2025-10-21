@@ -1,6 +1,18 @@
 ﻿public class Item
 {
+        
+    public Item(string name, string type, int attackBonus = 0, int defenseBonus = 0) // Конструктор класса Item для инициализации свойств
+    {
+        
+    }
+    public virtual void Use(Player player) // Виртуальный метод использования предмета 
+    {
 
+    }    
+    public virtual void ShowStats() // Виртуальный метод отображения статистики предмета
+    {
+        
+    }
 }
 public class Weapon: Item
 {
