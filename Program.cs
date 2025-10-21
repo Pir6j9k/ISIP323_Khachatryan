@@ -55,7 +55,46 @@ public class Potion: Item
 }
 public class Player
 {
+    public void Attack(Enemy enemy) // Метод атаки врага
+    {
 
+    }
+    public void Defend() // Метод защиты от атаки
+    {
+    
+    }
+    public void TakeDamage(int damage) // Метод получения урона
+    {
+        
+    }
+    public void Heal(int amount) // Метод лечения игрока
+    {
+
+    }
+    public void EquipWeapon(Weapon weapon) // Метод экипировки оружия
+    {
+
+    }
+    public void EquipArmor(Armor armor) // Метод экипировки доспехов
+    {
+
+    }
+    public int GetTotalAttack() // Метод расчета общей атаки игрока
+    {
+
+    }   
+    public int GetTotalDefense() // Метод расчета общей защиты игрока
+    {
+
+    }
+    public void ShowStatus() // Метод отображения статуса игрока
+    {
+
+    }
+    public void ShowCurrentEquipmentStats()  // Метод отображения статистики текущей экипировки
+    {
+
+    }
 }
 public class Enemy
 {
