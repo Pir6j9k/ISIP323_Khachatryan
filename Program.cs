@@ -276,7 +276,14 @@ public class Game
 
     }
 }
-class Program
+class Program // Главный класс программы
 {
-
+    static void Main(string[] args)
+    {
+        Game game = new Game(); // Создание экземпляра игры
+        game.StartGame(); // Запуск игры
+        Console.WriteLine("\nСпасибо за игру!"); 
+        Console.WriteLine("Нажмите любую клавишу для выхода"); 
+        Console.ReadKey(); 
+    }
 }
