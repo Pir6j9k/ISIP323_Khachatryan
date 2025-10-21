@@ -48,45 +48,101 @@ public class Potion: Item
 }
 public class Player
 {
+    public int Health {  get; set; }
+    public int MaxHealth { get; set; }
+    public Weapon CurrentWeapon { get; set; }
+    public Armor CurrentArmor { get; set; }
+    public bool IsFrozen { get; set; }
+    public bool IsDefending { get; set; }
+    public Player() //Конструктор класса Player, инициализирует начальные значения
+    {
+        MaxHealth = 100;
+        Health = MaxHealth;
+        CurrentWeapon = new Weapon("Кулаки", 5);
+        CurrentArmor = new Armor("Простая одежда", 2);
+        IsFrozen = false;
+        IsDefending = false;
+    }
     public void Attack(Enemy enemy) // Метод атаки врага
     {
-
+        int damage = GetTotalAttack();
+        Console.WriteLine($"\nВы атакуете {enemy.Name} и наносите {damage} урона!");
+        enemy.TakeDamage(damage);
+        IsDefending = false;
     }
     public void Defend() // Метод защиты от атаки
     {
-    
+        IsDefending = true;
+        Console.WriteLine("Вы принимаете защитную стойку.Следующая атака будет ослаблена!");
     }
     public void TakeDamage(int damage) // Метод получения урона
     {
-        
+        if (IsDefending)
+        {
+            Random random = new Random();
+            double dodgeChance = 0.4;
+            if (random.NextDouble() < dodgeChance)
+            {
+                Console.WriteLine("\nВы увернулись от атаки!");
+                IsDefending= false;
+                return;
+            }
+            double block = 0.7 + (random.NextDouble() * 0.3);
+            int blockedDamage = (int)(GetTotalDefense() * block);
+            damage = Math.Max(0, damage - blockedDamage);
+            Console.WriteLine($"Вы блокируете {blockedDamage} урона! Получено урона: {damage}");
+            IsDefending = false;
+        }
+        Health = Math.Max(0, Health-damage);
+        Console.WriteLine($"Вы получили {damage} урона. HP:{Health}/{MaxHealth}");
     }
     public void Heal(int amount) // Метод лечения игрока
     {
-
+        int oldHealth = Health;
+        Health = Math.Min(MaxHealth, Health + amount);
+        int actualHeal = Health - oldHealth;
+        Console.WriteLine($"Восстановлено {actualHeal} здоровья.\nHP: {Health}/{MaxHealth}"); // Вывод информации о лечении
     }
     public void EquipWeapon(Weapon weapon) // Метод экипировки оружия
     {
-
+        CurrentWeapon = weapon;
+        Console.WriteLine($"Вы экипировали: {weapon.Name} (+{weapon.AttackBonus} к атаке)");
     }
     public void EquipArmor(Armor armor) // Метод экипировки доспехов
     {
-
+        CurrentArmor = armor;
+        Console.WriteLine($"Вы экипировали: {armor.Name} (+{armor.AttackBonus} к атаке)");
     }
     public int GetTotalAttack() // Метод расчета общей атаки игрока
     {
-
+        int attack = 10;
+        if (CurrentWeapon != null)
+            attack += CurrentWeapon.AttackBonus;
+        return attack;
     }   
     public int GetTotalDefense() // Метод расчета общей защиты игрока
     {
-
+        int defense = 5;
+        if (CurrentArmor != null)
+            defense += CurrentArmor.DefenseBonus;
+        return defense;
     }
     public void ShowStatus() // Метод отображения статуса игрока
     {
-
+        Console.WriteLine($"=== СТАТУС ИГРОКА ===");
+        Console.WriteLine($"HP: {Health}/{MaxHealth}");
+        Console.WriteLine($"Оружие: {CurrentWeapon.Name} (+{CurrentWeapon.AttackBonus} атаки)"); 
+        Console.WriteLine($"Доспехи: {CurrentArmor.Name} (+{CurrentArmor.DefenseBonus} защиты)"); 
+        Console.WriteLine($"Общая атака: {GetTotalAttack()}");
+        Console.WriteLine($"Общая защита: {GetTotalDefense()}\n");
     }
     public void ShowCurrentEquipmentStats()  // Метод отображения статистики текущей экипировки
     {
-
+        Console.WriteLine("\n=== ТЕКУЩАЯ ЭКИПИРОВКА ===");
+        Console.WriteLine($"Оружие: {CurrentWeapon.Name} (+{CurrentWeapon.AttackBonus} атаки)");
+        Console.WriteLine($"Доспехи: {CurrentArmor.Name} (+{CurrentArmor.DefenseBonus} защиты)");
+        Console.WriteLine($"Общая атака: {GetTotalAttack()}");
+        Console.WriteLine($"Общая защита: {GetTotalDefense()}\n");
     }
 }
 public class Enemy
