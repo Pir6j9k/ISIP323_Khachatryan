@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.Xml.Linq;
 
 public class Item
 {
@@ -98,23 +99,66 @@ public class Player
 }
 public class Enemy
 {
+    public virtual void AttackPlayer(Player player) // Виртуальный метод атаки игрока
+    {
+       
+    }
+    protected virtual void ApplySpecialAbility(Player player)  // Виртуальный метод применения особой способности
+    {
 
+    }
+    public void TakeDamage(int damage) // Метод получения урона врагом
+    {
+
+    }
+    public bool IsAlive() // Метод проверки, жив ли враг
+    {
+
+    }
 }
 public class Goblin: Enemy
 {
+    // Конструктор гоблина с базовыми характеристиками
+    public Goblin() 
+        : base("Гоблин", "Гоблин", 30, 8, 3)
+    {
 
+    }  
 }
 public class Skeleton: Enemy
 {
+    // Конструктор скелета с базовыми характеристиками
+    public Skeleton() 
+        : base("Скелет", "Скелет", 25, 10, 2)
+    {
 
+    }
+    protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности скелета
+    {
+
+    }
 }
 public class Mage: Enemy
 {
+    // Конструктор мага с базовыми характеристиками
+    public Mage() 
+        : base("Маг", "Маг", 20, 12, 1)
+    {
 
+    }
+    protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности мага
+    {
+
+    }
 }
 public class Boss: Enemy
 {
+    // Конструктор босса
+    public Boss(string name, string bossType, int health, int attack, int defense)
+        : base(name, "Босс", health, attack, defense)
+    {
 
+    }
 }
 public class VVG : Boss
 {
