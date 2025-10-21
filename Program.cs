@@ -5,18 +5,21 @@ using System.Xml.Linq;
 
 public class Item
 {
-        
+    public string Name {  get; set; }
+    public string Type {  get; set; }
+    public int AttackBonus {  get; set; }
+    public int DefenseBonus {  get; set; }
+
     public Item(string name, string type, int attackBonus = 0, int defenseBonus = 0) // Конструктор класса Item для инициализации свойств
     {
-        
+        Name = name;
+        Type = type;
+        AttackBonus = attackBonus;
+        DefenseBonus = defenseBonus;
     }
     public virtual void Use(Player player) // Виртуальный метод использования предмета 
     {
-
-    }    
-    public virtual void ShowStats() // Виртуальный метод отображения статистики предмета
-    {
-        
+        Console.WriteLine($"Использован предмет: {Name}");
     }
 }
 public class Weapon: Item
