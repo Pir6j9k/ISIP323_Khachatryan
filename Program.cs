@@ -260,7 +260,7 @@ public class VVG : Boss
     public VVG() 
         : base("ВВГ", "ВВГ", 60, 12, 4)
     {
-
+        CritChance = 0.3; // 30% шанс крит. урона (обычный гоблин 20% + 10%)
     }
 }
 public class Kovalsky: Boss
@@ -269,11 +269,11 @@ public class Kovalsky: Boss
     public Kovalsky() 
         : base("Ковальский", "Ковальский", 63, 13, 3)
     {
-
+        IgnoreArmor = true;
     }
     protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности
     {
-
+        Console.WriteLine($"{Name} полностью игнорирует защиту игрока!");
     }
 }
 public class ArchimageCPP: Boss
@@ -282,11 +282,15 @@ public class ArchimageCPP: Boss
     public ArchimageCPP() 
         : base("Архимаг C++", "Архимаг C++", 36, 19, 2)
     {
-
+        FreezeChance = 0.35; // 35% шанс заморозки (обычный маг 25% + 10%)
     }
     protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности
     {
-        
+        if (random.NextDouble() < FreezeChance)
+        {
+            player.IsFrozen = true;
+            Console.WriteLine($"{Name} замораживает игрока магией C++! Игрок пропустит следующий ход.");
+        }
     }
 }
 public class PestovCMM: Boss
@@ -295,11 +299,17 @@ public class PestovCMM: Boss
     public PestovCMM() 
         : base("Пестов С--", "Пестов С--", 33, 18, 1)
     {
-
+        IgnoreArmor = true;
+        FreezeChance = 0.4; // 40% шанс заморозки (обычный маг 25% + 15%)
     }
     protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности
     {
-        
+        Console.WriteLine($"{Name} игнорирует защиту игрока!");
+        if (random.NextDouble() < FreezeChance)
+        {
+            player.IsFrozen = true;
+            Console.WriteLine($"{Name} замораживает игрока магией С--! Игрок пропустит следующий ход.");
+        }
     }
 }
 public class Chest
