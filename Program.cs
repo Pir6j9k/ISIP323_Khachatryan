@@ -162,19 +162,51 @@ public class Boss: Enemy
 }
 public class VVG : Boss
 {
+    // Конструктор босса ВВГ с усиленными характеристиками
+    public VVG() 
+        : base("ВВГ", "ВВГ", 60, 12, 4)
+    {
 
+    }
 }
 public class Kovalsky: Boss
 {
+    // Конструктор босса Ковальского с усиленными характеристиками
+    public Kovalsky() 
+        : base("Ковальский", "Ковальский", 63, 13, 3)
+    {
 
+    }
+    protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности
+    {
+
+    }
 }
 public class ArchimageCPP: Boss
 {
+    // Конструктор босса Архимаг C++ с усиленными характеристиками
+    public ArchimageCPP() 
+        : base("Архимаг C++", "Архимаг C++", 36, 19, 2)
+    {
 
+    }
+    protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности
+    {
+        
+    }
 }
 public class PestovCMM: Boss
 {
+    // Конструктор босса Пестов С-- с гибридными характеристиками
+    public PestovCMM() 
+        : base("Пестов С--", "Пестов С--", 33, 18, 1)
+    {
 
+    }
+    protected override void ApplySpecialAbility(Player player) // Переопределенный метод особой способности
+    {
+        
+    }
 }
 public class Chest
 {
