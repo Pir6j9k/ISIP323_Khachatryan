@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.ComponentModel.Design;
 using System.Numerics;
 using System.Xml.Linq;
 
@@ -373,49 +374,171 @@ public class Chest
 }
 public class Game
 {
+    private Player player;
+    private Random random;
+    private int turnCount;
+    private bool gameRunning;
+    public Game() // Конструктор игры
+    {
+        player = new Player();
+        random = new Random();
+        turnCount = 0;
+        gameRunning = true;
+    }
     public void StartGame() // Основной метод запуска игры
     {
-
+        Console.WriteLine("Добро пожаловать в текстовую RPG!"); 
+        Console.WriteLine("Каждый ход вы будете встречать либо врага, либо сундук.");
+        Console.WriteLine("Каждые 10 ходов вас ждет встреча с боссом!"); 
+        Console.WriteLine("Удачи!");
+        GameLoop();
     }
     private void GameLoop() // Основной игровой цикл
     {
-
+        while (gameRunning && player.Health > 0) // Цикл продолжается пока игра активна и игрок жив
+        {
+            turnCount++;
+            Console.WriteLine($"\n=== ХОД {turnCount} ===");
+            player.ShowStatus();
+            HandleTurn();
+            if (player.Health <= 0) // Проверка смерти игрока
+            {
+                Console.WriteLine("\n=== ИГРА ОКОНЧЕНА ===");
+                Console.WriteLine("Вы пали в бою...");
+                break;
+            }
+            Console.WriteLine("\nНажмите любую клавишу для продолжения..."); 
+            Console.ReadKey();
+        }
     }
     private void HandleTurn() // Метод обработки одного хода
     {
-
+        bool isEnemy = random.Next(2) == 0; // Генерация случайного события (50% враг, 50% сундук)
+        if (turnCount % 10 == 0) // Проверка, каждый ли 10-й ход
+        {
+            Console.WriteLine("!!! Появляется БОСС !!!");
+            HandleBoss();
+        }
+        else if (isEnemy)
+        {
+            HandleEnemy();
+        }
+        else
+        {
+            HandleChest(); 
+        }
     }
     private void HandleEnemy() // Метод обработки встречи с обычным врагом
     {
-
+        Enemy enemy = GenerateRandomEnemy();
+        Console.WriteLine($"На вашем пути появляется {enemy.Name} (HP/DMG/DF:{enemy.MaxHealth}/{enemy.Attack}/{enemy.Defense})!");
+        Battle(enemy);
     }    
     private void HandleBoss() // Метод обработки встречи с боссом
     {
-
+        Enemy boss = GenerateRandomBoss();
+        Console.WriteLine($"На вашем пути появляется {boss.Name} (HP/DMG/DF:{boss.MaxHealth}/{boss.Attack}/{boss.Defense})!");
+        Battle(boss);
     }
     private void HandleChest() // Метод обработки найденного сундука
     {
-
+        Chest chest = new Chest();
+        Item foundItem = chest.Open();
+        if (foundItem.Type == "Зелье")
+        {
+            foundItem.Use(player);
+        }
+        else if (foundItem.Type == "Оружие" || foundItem.Type == "Доспехи")
+        {
+            OfferEquipmentChoice(foundItem);
+        }
     }
     private void OfferEquipmentChoice(Item newItem) // Метод предложения выбора экипировки
     {
-
+        Console.WriteLine("Хотите экипировать этот предмет?");
+        Console.WriteLine("1 - Взять новый предмет");
+        Console.WriteLine("2 - Оставить текущий");
+        Console.Write("Ваш выбор: ");
+        string choice = Console.ReadLine();
+        if (choice == "1")
+        {
+            if (newItem is Weapon newWeapon)
+            {
+                Console.WriteLine($"\nВы меняете {player.CurrentWeapon.Name} на {newWeapon.Name}!");
+                player.EquipWeapon(newWeapon); // Экипировка нового оружия
+            }
+            else if (newItem is Armor newArmor)
+            {
+                Console.WriteLine($"\nВы меняете {player.CurrentArmor.Name} на {newArmor.Name}!");
+                player.EquipArmor(newArmor); // Экипировка новых доспехов
+            }
+            player.ShowCurrentEquipmentStats();
+        }
+        else
+        {
+            Console.WriteLine("Вы оставляете предмет в сундуке.");
+        }
     }
     private void Battle(Enemy enemy) // Метод проведения боя
     {
-
+        Console.WriteLine($"\n=== БОЙ С {enemy.Name.ToUpper()} ===");
+        while (enemy.IsAlive() && player.Health > 0)
+        {
+            if (!player.IsFrozen)
+            {
+                ShowBattleMenu();
+                string choice = Console.ReadLine();
+                if ( choice == "1") 
+                    player.Attack(enemy);
+                if (choice == "2")
+                    player.Defend();
+                else
+                    Console.WriteLine("Неверный выбор! Вы теряете ход.");
+            }
+            else
+            {
+                Console.WriteLine("Вы заморожены и пропускаете ход!");
+                player.IsFrozen = false;
+            }
+            if (!enemy.IsAlive())
+            {
+                Console.WriteLine($"\nПобеда! Вы победили {enemy.Name}!");
+                break;
+            }
+            enemy.AttackPlayer(player); 
+            if (player.Health <= 0)
+            {
+                break;
+            }
+        }
     }
     private void ShowBattleMenu() // Метод отображения меню боя
     {
-
+        Console.WriteLine("\nВыберите действие:");
+        Console.WriteLine("1 - Атаковать");
+        Console.WriteLine("2 - Защищаться");
+        Console.Write("Ваш выбор: ");
     }
     private Enemy GenerateRandomEnemy() // Метод генерации случайного обычного врага
     {
-
+        var enemies = new List<Enemy>
+            {
+                new Goblin(), 
+                new Skeleton(),
+                new Mage() 
+            };
+        return enemies[random.Next(enemies.Count)]; // Возврат случайного врага из списка
     }
     private Enemy GenerateRandomBoss() // Метод генерации случайного босса
     {
-
+        var bosses = new List<Enemy> 
+            {
+                new VVG(),
+                new Kovalsky(),
+                new ArchimageCPP(),
+                new PestovCMM()
+            };
+        return bosses[random.Next(bosses.Count)]; // Возврат случайного босса из списка
     }
 }
 class Program // Главный класс программы
